@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>TEAM TIM — San Diego 2026</title>
+<style>
+:root {
+  --bg-deep: #0F1923;
+  --bg-mid: #131D29;
+  --bg-card: #162230;
+  --bg-header: #1E3044;
+  --border: #2A3F55;
+  --border-light: #1E3044;
+  --text: #D4DDE8;
+  --text-dim: #7A8FA3;
+  --text-muted: #4A6275;
+  --text-faint: #3A4F60;
+  --text-bright: #F5EDE3;
+  --sand: #C49A6C;
+  --blue: #5BA4CF;
+  --green: #7EC8A0;
+  --amber: #E8B960;
+  --coral: #E07A5F;
+  --red: #D94F4F;
+  --purple: #8B7EC8;
+  --purple-dim: #5B5FA0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: linear-gradient(180deg, #1A2332 0%, var(--bg-deep) 40%, var(--bg-card) 100%);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: 'Courier New', monospace; }
+.header {
+  background: linear-gradient(135deg, var(--bg-header) 0%, var(--bg-deep) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 20px 16px;
+}
+.header-inner { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+.nav {
+  display: flex; justify-content: center; gap: 0;
+  background: var(--bg-deep); border-bottom: 1px solid var(--border-light);
+  position: sticky; top: 0; z-index: 100; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav button {
+  padding: 12px 16px; background: transparent; border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted); font-family: 'Courier New', monospace;
+  font-size: 11px; letter-spacing: 2px; cursor: pointer;
+  transition: all 0.3s; white-space: nowrap;
+}
+.nav button.active { color: var(--text-bright); border-bottom-color: var(--sand); }
+.content { max-width: 800px; margin: 0 auto; padding: 24px 16px 100px; }
+.tab { display: none; }
+.tab.active { display: block; }
+
+/* Cards */
+.card {
+  background: var(--bg-mid); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px; margin-bottom: 10px;
+}
+.card-header {
+  width: 100%; text-align: left; background: var(--bg-mid);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; color: var(--text); cursor: pointer;
+  font-family: Georgia, serif; transition: all 0.2s;
+}
+.card-header:hover { border-color: var(--sand); }
+
+/* Checkboxes */
+.check-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 8px 12px; cursor: pointer; border-radius: 6px;
+  transition: opacity 0.2s;
+}
+.check-item.done { opacity: 0.45; }
+.check-item input[type="checkbox"] {
+  width: 18px; height: 18px; margin-top: 1px;
+  accent-color: var(--sand); flex-shrink: 0;
+}
+.check-item .label { font-size: 13px; line-height: 1.4; }
+.check-item .label.critical { color: var(--amber); font-weight: 600; }
+.check-item.done .label { text-decoration: line-through; color: var(--text-muted); }
+
+/* Progress bars */
+.progress-bar {
+  height: 4px; background: var(--bg-deep); border-radius: 2px;
+  overflow: hidden; margin-top: 8px;
+}
+.progress-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
+
+/* Textareas */
+textarea {
+  width: 100%; min-height: 100px; padding: 12px;
+  background: var(--bg-mid); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--text);
+  font-family: Georgia, serif; font-size: 13px;
+  line-height: 1.7; resize: vertical; outline: none;
+}
+textarea:focus { border-color: var(--sand); }
+
+/* Utility */
+.section-label {
+  font-size: 9px; letter-spacing: 3px; color: var(--text-muted);
+  font-family: 'Courier New', monospace; margin-bottom: 16px; font-weight: 700;
+}
+.accent-border { border-left: 2px solid var(--sand); padding: 10px 16px; margin-bottom: 20px; }
+.alert {
+  border-radius: 8px; padding: 14px 16px; margin-bottom: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="mono" style="font-size:10px;letter-spacing:4px;color:var(--blue);font-weight:700;margin-bottom:4px">OPERATION</div>
+      <div style="font-size:26px;color:var(--text-bright);letter-spacing:2px">TEAM TIM</div>
+      <div style="font-size:12px;color:var(--text-dim);margin-top:4px;font-style:italic">Timmy &amp; Nikki · San Diego · April 2026</div>
+    </div>
+    <div style="text-align:right">
+      <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--text-dim)">STRUCTURAL INTEGRITY</div>
+      <div id="sis-score" style="font-size:36px;line-height:1.1">0</div>
+      <div id="sis-label" class="mono" style="font-size:10px;letter-spacing:2px;font-weight:700"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav" id="nav">
+  <button data-tab="dashboard" class="active"><span style="font-size:8px">◉</span> HQ</button>
+  <button data-tab="itinerary"><span style="font-size:8px">◈</span> TIMELINE</button>
+  <button data-tab="checklists"><span style="font-size:8px">◇</span> CHECKLISTS</button>
+  <button data-tab="speech"><span style="font-size:8px">◆</span> SPEECH</button>
+  <button data-tab="note"><span style="font-size:8px">◊</span> NOTE</button>
+  <button data-tab="notes"><span style="font-size:8px">▣</span> NOTES</button>
+  <button data-tab="refs"><span style="font-size:8px">◎</span> INTEL</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- ==================== DASHBOARD ==================== -->
+<div class="tab active" id="tab-dashboard">
+  <!-- Countdown -->
+  <div id="countdown-box" style="text-align:center;padding:20px 24px;margin-bottom:20px;background:linear-gradient(135deg,#162230,#1E3044);border:1px solid var(--border);border-radius:12px">
+    <div class="mono" style="font-size:9px;letter-spacing:3px;color:var(--blue);margin-bottom:12px">COUNTDOWN TO CEREMONY</div>
+    <div id="countdown-display" style="display:flex;justify-content:center;gap:16px"></div>
+    <div id="countdown-note" class="mono" style="font-size:10px;color:var(--text-muted);margin-top:12px;letter-spacing:1px"></div>
+  </div>
+
+  <div id="maxim-box" style="text-align:center;padding:20px 24px;margin-bottom:24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div id="maxim" style="font-size:14px;font-style:italic;color:var(--sand);line-height:1.6"></div>
+    <div class="mono" style="font-size:9px;color:var(--text-muted);margin-top:8px;letter-spacing:3px">MOYSE LEADERSHIP MODEL</div>
+  </div>
+
+  <!-- SIS Gauge -->
+  <div style="background:linear-gradient(135deg,var(--bg-card),var(--bg-header));border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;text-align:center">
+    <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--blue);margin-bottom:12px">STRUCTURAL INTEGRITY SCORE</div>
+    <div style="position:relative;width:100%;height:8px;background:var(--bg-deep);border-radius:4px;overflow:visible;margin-bottom:12px">
+      <div id="sis-bar" style="position:absolute;left:0;top:0;height:100%;width:0%;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--amber) 50%,var(--green));transition:width 0.6s"></div>
+      <div style="position:absolute;left:50%;top:-4px;width:1px;height:16px;background:var(--border)"></div>
+      <div style="position:absolute;left:70%;top:-4px;width:1px;height:16px;background:var(--border)"></div>
+      <div style="position:absolute;left:85%;top:-4px;width:1px;height:16px;background:var(--border)"></div>
+    </div>
+    <div class="mono" style="display:flex;justify-content:space-between;font-size:8px;color:var(--text-muted);letter-spacing:1px">
+      <span>NOT READY</span><span>HIGH RISK</span><span>CONDITIONAL</span><span>VIABLE</span>
+    </div>
+    <div id="sis-desc" style="margin-top:16px;font-size:12px;font-style:italic"></div>
+  </div>
+
+  <!-- Stat Grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px">
+    <div class="card" style="text-align:center;border-left:3px solid var(--blue)">
+      <div class="mono" style="font-size:8px;letter-spacing:3px;color:var(--text-muted);margin-bottom:8px">ITEMS</div>
+      <div id="stat-items" style="font-size:24px;color:var(--blue)">0/0</div>
+      <div class="progress-bar"><div id="bar-items" class="progress-fill" style="background:var(--blue);width:0%"></div></div>
+    </div>
+    <div class="card" style="text-align:center;border-left:3px solid var(--coral)">
+      <div class="mono" style="font-size:8px;letter-spacing:3px;color:var(--text-muted);margin-bottom:8px">CRITICAL</div>
+      <div id="stat-crit" style="font-size:24px;color:var(--coral)">0/0</div>
+      <div class="progress-bar"><div id="bar-crit" class="progress-fill" style="background:var(--coral);width:0%"></div></div>
+    </div>
+    <div class="card" style="text-align:center;border-left:3px solid var(--amber)">
+      <div class="mono" style="font-size:8px;letter-spacing:3px;color:var(--text-muted);margin-bottom:8px">OPEN</div>
+      <div id="stat-open" style="font-size:24px;color:var(--amber)">7</div>
+      <div class="progress-bar"><div id="bar-open" class="progress-fill" style="background:var(--amber);width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- Alerts -->
+  <div id="alert-open" class="alert" style="background:#1E2A1E;border:1px solid #3D5A2E;border-left:3px solid var(--amber);display:none">
+    <div class="mono" style="font-size:10px;font-weight:700;color:var(--amber);letter-spacing:2px;margin-bottom:8px">OPEN VARIABLES REQUIRE RESOLUTION</div>
+    <div id="alert-open-text" style="font-size:12px;color:var(--text-dim);line-height:1.6"></div>
+  </div>
+  <div id="alert-crit" class="alert" style="background:#2A1E1E;border:1px solid #5A3030;border-left:3px solid var(--coral);display:none">
+    <div id="alert-crit-text" class="mono" style="font-size:10px;font-weight:700;color:var(--coral);letter-spacing:2px;margin-bottom:8px"></div>
+    <div style="font-size:12px;color:var(--text-dim)">Critical items are structural requirements. They are not optional.</div>
+  </div>
+  <div id="alert-ready" class="alert" style="background:#1A2E25;border:1px solid #2D5A45;border-radius:12px;padding:24px;text-align:center;display:none">
+    <div style="font-size:20px;color:var(--green)">Mission Ready</div>
+    <div style="font-size:12px;color:var(--blue);font-style:italic;margin-top:8px">All systems viable. Execute clean. Be present.</div>
+  </div>
+
+  <!-- Checklist Summary -->
+  <div style="margin-top:24px">
+    <div class="section-label">CHECKLIST STATUS</div>
+    <div id="cl-summary"></div>
+  </div>
+
+  <button onclick="if(confirm('Reset all progress? This cannot be undone.')){localStorage.removeItem('teamtim');location.reload()}" class="mono" style="margin-top:24px;padding:8px 20px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text-muted);font-size:10px;letter-spacing:2px;cursor:pointer">RESET ALL</button>
+</div>
+
+<!-- ==================== ITINERARY ==================== -->
+<div class="tab" id="tab-itinerary">
+  <div class="section-label">MISSION TIMELINE</div>
+  <div id="timeline-list"></div>
+</div>
+
+<!-- ==================== CHECKLISTS ==================== -->
+<div class="tab" id="tab-checklists">
+  <div id="cl-tabs" style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap"></div>
+  <div id="cl-content"></div>
+</div>
+
+<!-- ==================== SPEECH ==================== -->
+<div class="tab" id="tab-speech">
+  <div class="section-label">BEST MAN SPEECH · REFLECTION + ASSEMBLY</div>
+  <div id="speech-intro" class="accent-border" style="font-size:12px;color:var(--sand);font-style:italic;line-height:1.6"></div>
+
+  <!-- Mode Toggle -->
+  <div id="speech-toggle" style="display:flex;gap:0;margin-bottom:24px;border-radius:8px;overflow:hidden;border:1px solid var(--border)"></div>
+
+  <div id="speech-reflect"></div>
+  <div id="speech-preview" style="display:none"></div>
+</div>
+
+<!-- ==================== NOTE ==================== -->
+<div class="tab" id="tab-note">
+  <div class="section-label">NOTE TO TIMMY · NIGHT BEFORE THE WEDDING</div>
+  <div class="accent-border" style="font-size:12px;color:var(--sand);font-style:italic">
+    Handwrite this on a card or quality paper. Give it Thursday night after rehearsal or Friday morning.
+  </div>
+  <div style="background:linear-gradient(135deg,#1A1E2E,#141828);border:1px solid #2A3044;border-radius:12px;padding:28px 24px;font-size:15px;line-height:2.1;color:#C8C4D8;white-space:pre-wrap">Timmy,
+
+Tomorrow is one of those days that actually matters. Not because of the ceremony or the photos or any of the logistics. It matters because you decided to build something permanent with someone who deserves it.
+
+I've known you long enough to know how you operate. You don't do things for show. When you commit, it's structural. It's real. And the fact that you found someone who matches that, who sees you for exactly who you are and chose to build with you anyway, that's not luck. That's the result of you being the kind of person worth choosing.
+
+I'm proud of who you've become. Not because you've changed into someone different, but because you've become more of what was already there. That takes a partner who makes you better, not smaller. You found that.
+
+Tomorrow I'll be standing right next to you. Same as always. And I'll be the one trying not to tear up during the vows, so do me a favor and keep it brief.
+
+Love you, brother.
+
+Mac</div>
+</div>
+
+<!-- ==================== NOTES / REMINDERS ==================== -->
+<div class="tab" id="tab-notes">
+  <div class="section-label">QUICK NOTES + REMINDERS</div>
+  <div class="accent-border" style="font-size:12px;color:var(--sand);font-style:italic;line-height:1.6">
+    Capture things as they come up. Assign a due date to keep them sequenced.
+  </div>
+
+  <!-- Add Note Form -->
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:20px">
+    <input id="note-input" type="text" placeholder="What needs to happen?" style="width:100%;padding:10px 12px;background:var(--bg-mid);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:Georgia,serif;font-size:13px;outline:none;margin-bottom:10px" onfocus="this.style.borderColor='var(--sand)'" onblur="this.style.borderColor='var(--border)'">
+    <div style="display:flex;gap:10px;align-items:center">
+      <div style="flex:1">
+        <label class="mono" style="font-size:9px;color:var(--text-muted);letter-spacing:1px">DUE DATE</label>
+        <input id="note-due" type="date" style="width:100%;padding:8px 10px;background:var(--bg-mid);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Courier New',monospace;font-size:12px;outline:none;margin-top:4px" onfocus="this.style.borderColor='var(--sand)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <button onclick="addNote()" class="mono" style="padding:10px 20px;background:var(--bg-header);border:1px solid var(--sand);border-radius:6px;color:var(--text-bright);font-size:11px;letter-spacing:2px;cursor:pointer;margin-top:16px;white-space:nowrap">+ ADD</button>
+    </div>
+  </div>
+
+  <!-- Active Notes -->
+  <div id="notes-active"></div>
+
+  <!-- Completed Notes -->
+  <div id="notes-done-section" style="display:none;margin-top:24px">
+    <div class="mono" style="font-size:10px;letter-spacing:2px;color:var(--text-muted);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:6px">COMPLETED</div>
+    <div id="notes-done"></div>
+  </div>
+</div>
+
+<!-- ==================== INTEL ==================== -->
+<div class="tab" id="tab-refs">
+  <div class="section-label">CONFIRMATIONS + ADDRESSES</div>
+  <div id="refs-content"></div>
+
+  <div id="open-vars-card" style="margin-top:20px"></div>
+
+  <div style="margin-top:32px;text-align:center;padding:20px 0;border-top:1px solid var(--border)">
+    <div style="font-size:13px;font-style:italic;color:var(--sand)">"Presence over adrenaline. Rhythm over intensity. Consistency over heroism."</div>
+    <div class="mono" style="font-size:9px;color:var(--text-muted);margin-top:8px;letter-spacing:3px">THE BRODCODE</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+// =============================================
+// TEAM TIM — Standalone with localStorage
+// =============================================
+
+const STORAGE_KEY = 'teamtim';
+
+// STATE
+let state = {
+  checked: {},
+  openResolved: {},
+  speechAnswers: {},
+  notes: [],
+};
+
+function loadState() {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    if (s) { const p = JSON.parse(s); Object.assign(state, p); }
+  } catch(e) {}
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+loadState();
+
+// DATA
+const MAXIMS = [
+  "Structure over narrative.",
+  "Rhythm over intensity.",
+  "Presence over adrenaline.",
+  "Consistency over heroism.",
+  "A real company earns calm.",
+  "Completion feeds confidence. Chaos feeds addiction.",
+  "Boundaries are how truth keeps its shape.",
+  "Peace is the ultimate measure of competence.",
+  "You do not fix chaos by working harder. You fix it by restoring rhythm.",
+];
+
+const TIMELINE = [
+  { day:"TUE APR 7", label:"Deploy to San Diego", icon:"✈️", accent:"#5BA4CF",
+    brodcode:"Sleep is the highest-leverage asset tonight. Nothing else matters after landing.",
+    events:[
+      {time:"3:00 PM EST",text:"Depart for ROC airport",tip:"Allow 90 min buffer for parking and security"},
+      {time:"5:02 PM EST",text:"AA 3825 · ROC → ORD · Seat 8A",tip:null},
+      {time:"6:25 PM CST",text:"Arrive O'Hare · 2h 35m layover",tip:"Eat dinner. Charge phone. No drinks."},
+      {time:"9:00 PM CST",text:"AA 2285 · ORD → SAN · Seat 8F",tip:null},
+      {time:"11:33 PM PT",text:"Arrive San Diego",tip:null},
+      {time:"11:45 PM PT",text:"Enterprise rental pickup · Conf: 69430727",tip:null},
+      {time:"12:15 AM PT",text:"Drive to lodging → Sleep",tip:"⚠️ LODGING TBD"},
+    ]},
+  { day:"WED APR 8", label:"Recovery + Recon", icon:"🔧", accent:"#7EC8A0",
+    brodcode:"Hydrate. Confirm logistics. Protect the rhythm for the rest of the week.",
+    events:[
+      {time:"Morning",text:"Sleep in. Recover from travel.",tip:null},
+      {time:"Afternoon",text:"Confirm all wedding ops with Timmy",tip:"Rehearsal, speech order, rings, attire, groomsmen duties"},
+      {time:"Evening",text:"Finalize speech. Review reflections, read aloud once.",tip:"Switch to Preview mode in Speech tab. Lock it in."},
+      {time:"Night",text:"Early bed. Hydrate.",tip:"⚠️ LODGING TBD"},
+    ]},
+  { day:"THU APR 9", label:"Setup + Rehearsal", icon:"🏨", accent:"#C49A6C",
+    brodcode:"Thursday night sets the tone. Preparation is work. Treat it that way.",
+    events:[
+      {time:"Morning",text:"Free time. Final errands if needed.",tip:"Tide pen, safety pins, anything missing"},
+      {time:"4:00 PM",text:"Check in: Bahia Resort Hotel",tip:"998 W Mission Bay Dr · Conf: 72071536393710"},
+      {time:"4:30 PM",text:"Steam suit. Lay out all formalwear.",tip:"Suit, shirt, tie, shoes, socks, belt, watch"},
+      {time:"5:00 PM",text:"Charge devices. Final speech prep.",tip:"Screenshot all addresses and confirmations"},
+      {time:"Evening",text:"Rehearsal (TIME & LOCATION TBD)",tip:"⚠️ Confirm with Timmy"},
+      {time:"After",text:"One drink max. Bed early.",tip:null},
+    ]},
+  { day:"FRI APR 10", label:"Wedding Day", icon:"💍", accent:"#E8B960",
+    brodcode:"This is execution day. The preparation was the work. Today you are present.",
+    events:[
+      {time:"Morning",text:"Breakfast. Hydrate. Don't rush.",tip:null},
+      {time:"10:00 AM",text:"Review speech aloud once, standing",tip:null},
+      {time:"11:00 AM",text:"Light lunch. Nothing heavy.",tip:null},
+      {time:"1:00 PM",text:"Shower, shave, begin dressing",tip:null},
+      {time:"2:00 PM",text:"Fully dressed. Photos may start.",tip:"Pocket check: phone (silent), speech, wallet"},
+      {time:"3:00 PM",text:"Arrive Tower Beach Club",tip:"Groomsmen photos, pre-ceremony window"},
+      {time:"3:45 PM",text:"Final checks. Water. Bathroom.",tip:"Confirm rings physically in hand if assigned"},
+      {time:"4:30 PM",text:"CEREMONY BEGINS",tip:"Stand steady. Don't lock knees."},
+      {time:"Reception",text:"Speech window (max 2 drinks before)",tip:"Water between every drink"},
+      {time:"Evening",text:"Enjoy the night. Mission complete.",tip:null},
+    ]},
+  { day:"SAT APR 11", label:"Beach Day + Exfil", icon:"🌊", accent:"#E07A5F",
+    brodcode:"Highest friction day. Follow the sequence. Do not improvise Saturday.",
+    events:[
+      {time:"9:00 AM",text:"Wake. Pack everything.",tip:"Drawers, bathroom, closet, under bed, chargers"},
+      {time:"10:30 AM",text:"Check out Bahia Resort",tip:"Bags → bell desk or car trunk"},
+      {time:"11:00 AM",text:"Beach day · Mission Beach",tip:"Sunscreen. Hydrate."},
+      {time:"3:30 PM",text:"Wind down. Shift to travel mode.",tip:null},
+      {time:"4:00 PM",text:"Leave beach. Shower/rinse.",tip:null},
+      {time:"5:30 PM",text:"Dinner near airport corridor",tip:null},
+      {time:"8:00 PM",text:"Return rental car. Gas up first.",tip:"⚠️ EXTEND CAR THROUGH EVENING"},
+      {time:"8:30 PM",text:"Clear security at SAN",tip:null},
+      {time:"10:40 PM",text:"AA 2366 · SAN → ORD · Seat 8A",tip:"Red eye. Sleep on the plane."},
+    ]},
+  { day:"SUN APR 12", label:"Recovery", icon:"🏠", accent:"#8B97A8",
+    brodcode:"Recovery is structural, not a luxury earned through sufficient suffering.",
+    events:[
+      {time:"4:45 AM CST",text:"Arrive ORD · 3h 44m layover",tip:"Coffee. Food. Charge."},
+      {time:"8:29 AM CST",text:"AA 3823 · ORD → ROC · Seat 8A",tip:null},
+      {time:"11:22 AM EST",text:"Arrive Rochester. Drive home.",tip:"No obligations. Sleep."},
+    ]},
+];
+
+const CL = {
+  packing:{label:"Packing",icon:"🧳",categories:[
+    {name:"Formalwear",items:[{id:"p1",text:"Suit or tux (garment bag)",c:1},{id:"p2",text:"Dress shirt",c:1},{id:"p3",text:"Backup dress shirt",c:0},{id:"p4",text:"Tie",c:1},{id:"p5",text:"Backup tie",c:0},{id:"p6",text:"Dress shoes",c:1},{id:"p7",text:"Black dress socks x2",c:0},{id:"p8",text:"Belt",c:1},{id:"p9",text:"Watch",c:0},{id:"p10",text:"Undershirt + undergarments",c:0}]},
+    {name:"Toiletries",items:[{id:"p11",text:"Toothbrush + toothpaste",c:0},{id:"p12",text:"Razor",c:0},{id:"p13",text:"Deodorant",c:0},{id:"p14",text:"Hair product",c:0},{id:"p15",text:"Cologne (travel size)",c:0},{id:"p16",text:"Advil / ibuprofen",c:0},{id:"p17",text:"Prescription meds",c:0}]},
+    {name:"Emergency Kit",items:[{id:"p18",text:"Tide pen",c:1},{id:"p19",text:"Safety pins (6+)",c:1},{id:"p20",text:"Electrolyte packets (4+)",c:0},{id:"p21",text:"Portable battery pack",c:1},{id:"p22",text:"Phone charger + cable",c:1},{id:"p23",text:"Breath mints",c:0},{id:"p24",text:"Band-aids",c:0}]},
+    {name:"Travel + Casual",items:[{id:"p25",text:"Casual clothes (3 days)",c:0},{id:"p26",text:"Beach outfit (trunks, tee)",c:0},{id:"p27",text:"Comfortable walking shoes",c:0},{id:"p28",text:"Sunglasses",c:1},{id:"p29",text:"Sunscreen SPF 30+",c:1},{id:"p30",text:"Hoodie / light jacket",c:0},{id:"p31",text:"Flip flops / sandals",c:0}]},
+    {name:"Documents + Essentials",items:[{id:"p32",text:"Wallet with ID",c:1},{id:"p33",text:"Phone",c:1},{id:"p34",text:"Cash ($100+ for tips)",c:0},{id:"p35",text:"Flight confirmation screenshot",c:1},{id:"p36",text:"Rental car confirmation screenshot",c:1},{id:"p37",text:"Hotel confirmation screenshot",c:1},{id:"p38",text:"All key addresses saved in phone",c:0}]},
+    {name:"Best Man Kit",items:[{id:"p39",text:"Speech (printed + on phone)",c:1},{id:"p40",text:"Wedding card",c:0},{id:"p41",text:"Gift (if applicable)",c:0},{id:"p42",text:"Night-before note for Timmy",c:0}]},
+  ]},
+  prep:{label:"Pre-Trip Prep",icon:"📋",categories:[
+    {name:"Open Variables",items:[{id:"r1",text:"Book lodging for April 7",c:1},{id:"r2",text:"Book lodging for April 8",c:1},{id:"r3",text:"Confirm rehearsal time",c:1},{id:"r4",text:"Confirm rehearsal location",c:1},{id:"r5",text:"Confirm speech order at reception",c:1},{id:"r6",text:"Confirm ring responsibility",c:1},{id:"r7",text:"Extend rental car through Saturday evening",c:1}]},
+    {name:"Best Man Prep",items:[{id:"r8",text:"Draft speech",c:1},{id:"r9",text:"Practice speech aloud (3+ times)",c:1},{id:"r10",text:"Print final speech copy",c:1},{id:"r11",text:"Confirm wedding-day expectations with Timmy",c:0},{id:"r12",text:"Confirm groomsmen coordination duties",c:0},{id:"r13",text:"Confirm exact attire requirements",c:0}]},
+    {name:"Final Bag Check",items:[{id:"r14",text:"All confirmations screenshotted",c:1},{id:"r15",text:"Suit in garment bag",c:1},{id:"r16",text:"Charger + battery pack packed",c:1},{id:"r17",text:"Emergency kit packed",c:0},{id:"r18",text:"Electrolytes packed",c:0}]},
+  ]},
+  weddingDay:{label:"Wedding Day Ops",icon:"💍",categories:[
+    {name:"Morning Rhythm",items:[{id:"w1",text:"Eat a real breakfast (protein)",c:1},{id:"w2",text:"Drink 32oz water before noon",c:1},{id:"w3",text:"Review speech aloud once, standing",c:1},{id:"w4",text:"Confirm ring status and location",c:1},{id:"w5",text:"Confirm ceremony time with Timmy",c:0},{id:"w6",text:"Text groomsmen: confirm timing",c:0}]},
+    {name:"Get Ready (12:00 to 2:00 PM)",items:[{id:"w7",text:"Light lunch",c:0},{id:"w8",text:"Shower and shave",c:1},{id:"w9",text:"Suit on, tie tied, shoes on by 2:00 PM",c:1},{id:"w10",text:"Mirror check: collar, cuffs, belt, shoes",c:0},{id:"w11",text:"Pocket: phone (silent), speech, wallet",c:1},{id:"w12",text:"Emergency kit accessible",c:0}]},
+    {name:"Pre-Ceremony (2:00 to 4:30 PM)",items:[{id:"w13",text:"Arrive Tower Beach Club by 3:00 PM",c:1},{id:"w14",text:"Find Timmy. Keep him grounded.",c:1},{id:"w15",text:"Rings confirmed on your person",c:1},{id:"w16",text:"Water, not alcohol",c:1},{id:"w17",text:"3:45 PM final bathroom break",c:0}]},
+    {name:"Ceremony + Reception",items:[{id:"w18",text:"Stand steady. Don't lock knees.",c:0},{id:"w19",text:"Hand off rings at the right moment",c:1},{id:"w20",text:"Max 2 drinks before speech",c:1},{id:"w21",text:"Deliver speech. Be present.",c:1},{id:"w22",text:"Hydrate before bed",c:0}]},
+  ]}
+};
+
+const REFLECTIONS = [
+  {id:"r_origin",cat:"THE FRIENDSHIP",prompt:"How did you and Timmy meet? What were the circumstances?",hint:"Don't overthink it. Just the facts of how you crossed paths.",use:"Opening context",n:"01"},
+  {id:"r_firstread",cat:"THE FRIENDSHIP",prompt:"What was your first impression of Timmy? What did you notice about him early on?",hint:"What stood out before you really knew him. A trait, a moment, something specific.",use:"Character introduction",n:"02"},
+  {id:"r_loyalty",cat:"THE FRIENDSHIP",prompt:"Describe a time Timmy showed up for you when it mattered. Not a big dramatic story necessarily. A time he was just there.",hint:"This is the core of the speech. One story, clearly told. What happened, what he did, why it stuck with you.",use:"Central story",n:"03"},
+  {id:"r_funny",cat:"THE FRIENDSHIP",prompt:"What is the funniest or most ridiculous thing you and Timmy have been through together?",hint:"Keep it wedding-appropriate. Something that would make the room laugh, not cringe.",use:"Lighter moment / comic relief",n:"04"},
+  {id:"r_character",cat:"WHO TIMMY IS",prompt:"If you had to describe Timmy to someone who never met him, in two or three sentences, what would you say?",hint:"Not what he does. Who he is. What makes him different from other people you know.",use:"Character statement",n:"05"},
+  {id:"r_growth",cat:"WHO TIMMY IS",prompt:"How has Timmy changed or grown since you first knew him? What has stayed the same?",hint:"Think about what's matured and what's still unmistakably Timmy.",use:"Growth arc",n:"06"},
+  {id:"r_nikki_first",cat:"TIMMY AND NIKKI",prompt:"When did you first hear about Nikki or meet her? What did you notice about Timmy when he talked about her?",hint:"What shifted in him. What you picked up on, even if he didn't say it directly.",use:"Transition to the relationship",n:"07"},
+  {id:"r_nikki_effect",cat:"TIMMY AND NIKKI",prompt:"How is Timmy different with Nikki in his life? What has she brought out in him?",hint:"Be specific. Not 'she makes him happy.' What does that actually look like?",use:"Nikki's impact",n:"08"},
+  {id:"r_couple",cat:"TIMMY AND NIKKI",prompt:"Describe a moment you witnessed between Timmy and Nikki that stuck with you. Something small is fine.",hint:"A look, a dynamic, how they handle something together. Real observation, not generic praise.",use:"Couple moment",n:"09"},
+  {id:"r_nikki_direct",cat:"TIMMY AND NIKKI",prompt:"What would you want to say directly to Nikki in the speech? One or two sentences.",hint:"She's joining your circle. What does she need to know about what she's getting?",use:"Direct address to Nikki",n:"10"},
+  {id:"r_toast",cat:"THE CLOSE",prompt:"What do you wish for them? If you could name one thing you hope their marriage is defined by, what would it be?",hint:"This becomes the toast. Keep it grounded. Not a fantasy. Something real you believe in.",use:"Toast / closing line",n:"11"},
+  {id:"r_tone",cat:"THE CLOSE",prompt:"What overall tone do you want the speech to land with? Funny and light? Grounded and real? A mix?",hint:"This helps shape how everything assembles. There's no wrong answer.",use:"Tone calibration",n:"12"},
+];
+
+const OPEN_VARS = [
+  {id:"o1",text:"Lodging: Tuesday April 7"},
+  {id:"o2",text:"Lodging: Wednesday April 8"},
+  {id:"o3",text:"Rehearsal time"},
+  {id:"o4",text:"Rehearsal location"},
+  {id:"o5",text:"Speech order at reception"},
+  {id:"o6",text:"Ring responsibility"},
+  {id:"o7",text:"Extend rental car through Saturday evening"},
+];
+
+const REFS = [
+  {title:"FLIGHTS",accent:"#5BA4CF",date:"Tue Apr 7 / Sat Apr 11",items:[{l:"Confirmation",v:"WLJCOD"},{l:"Outbound 1",v:"AA 3825 · ROC → ORD · 5:02 PM EST · Seat 8A"},{l:"Outbound 2",v:"AA 2285 · ORD → SAN · 9:00 PM CST · Seat 8F"},{l:"Return 1",v:"AA 2366 · SAN → ORD · 10:40 PM PT · Seat 8A"},{l:"Return 2",v:"AA 3823 · ORD → ROC · 8:29 AM CST · Seat 8A"}]},
+  {title:"RENTAL CAR",accent:"#7EC8A0",date:"Apr 7, 11:30 PM – Apr 11 (extend)",items:[{l:"Company",v:"Enterprise Rent-A-Car"},{l:"Confirmation",v:"69430727"},{l:"Pickup",v:"Tue Apr 7, 11:30 PM at SAN"},{l:"Dropoff",v:"Sat Apr 11 (EXTEND THROUGH EVENING)"},{l:"Address",v:"3355 Admiral Boland Way, SD 92101"}]},
+  {title:"HOTEL",accent:"#C49A6C",date:"Thu Apr 9 – Sat Apr 11",items:[{l:"Hotel",v:"Bahia Resort Hotel"},{l:"Confirmation",v:"72071536393710"},{l:"Address",v:"998 W Mission Bay Dr, SD 92109"},{l:"Phone",v:"(858) 488-0551"},{l:"Check-in",v:"Thu Apr 9, 4:00 PM"},{l:"Check-out",v:"Sat Apr 11, 11:00 AM"}]},
+  {title:"WEDDING",accent:"#E8B960",date:"Fri Apr 10",items:[{l:"Ceremony",v:"Fri Apr 10, 4:30 PM PT"},{l:"Venue",v:"Tower Beach Club, San Diego"},{l:"Rehearsal",v:"Thu Apr 9 (TIME & LOCATION TBD)"}]},
+  {title:"BEACH DAY",accent:"#E07A5F",date:"Sat Apr 11",items:[{l:"Event",v:"Family Beach Day"},{l:"Time",v:"Sat Apr 11, 11:00 AM"},{l:"Location",v:"Mission Beach, San Diego"}]},
+  {title:"RETURN TRAVEL",accent:"#8B97A8",date:"Sat Apr 11 – Sun Apr 12",items:[{l:"Depart SAN",v:"Sat Apr 11, 10:40 PM PT"},{l:"Arrive ORD",v:"Sun Apr 12, 4:45 AM CST"},{l:"Depart ORD",v:"Sun Apr 12, 8:29 AM CST"},{l:"Arrive ROC",v:"Sun Apr 12, 11:22 AM EST"},{l:"Recovery",v:"Sunday is a zero-obligation day"}]},
+];
+
+// HELPERS
+function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function getAllItems() {
+  const items = [];
+  Object.values(CL).forEach(cl => cl.categories.forEach(cat => cat.items.forEach(i => items.push(i))));
+  return items;
+}
+function getStats() {
+  const items = getAllItems();
+  let total=items.length, done=0, critTotal=0, critDone=0;
+  items.forEach(i => { if(state.checked[i.id]) done++; if(i.c) { critTotal++; if(state.checked[i.id]) critDone++; }});
+  const openDone = Object.values(state.openResolved).filter(Boolean).length;
+  return {total,done,critTotal,critDone,openDone,openTotal:7};
+}
+function calcSIS(s) {
+  const cp = s.critTotal>0 ? s.critDone/s.critTotal : 0;
+  const tp = s.total>0 ? s.done/s.total : 0;
+  const op = s.openDone/s.openTotal;
+  return Math.round(cp*40 + tp*35 + op*25);
+}
+function sisBand(score) {
+  if(score>=85) return {label:"VIABLE",color:"var(--green)",desc:"Systems are green. Execute with confidence."};
+  if(score>=70) return {label:"CONDITIONAL",color:"var(--amber)",desc:"Gaps present. Resolve open variables before departure."};
+  if(score>=50) return {label:"HIGH RISK",color:"var(--coral)",desc:"Structural gaps will create friction. Address critical items."};
+  return {label:"NOT READY",color:"var(--red)",desc:"Significant preparation outstanding. Do not depart unprepared."};
+}
+
+// NAVIGATION
+let currentTab = 'dashboard';
+document.querySelectorAll('.nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentTab = btn.dataset.tab;
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-'+currentTab).classList.add('active');
+    if(currentTab==='dashboard') renderDashboard();
+    if(currentTab==='speech') renderSpeech();
+  });
+});
+
+// RENDER: DASHBOARD
+function renderDashboard() {
+  const s = getStats();
+  const sis = calcSIS(s);
+  const band = sisBand(sis);
+  document.getElementById('sis-score').style.color = band.color;
+  document.getElementById('sis-score').textContent = sis;
+  document.getElementById('sis-label').style.color = band.color;
+  document.getElementById('sis-label').textContent = band.label;
+  document.getElementById('sis-bar').style.width = sis+'%';
+  document.getElementById('sis-desc').style.color = band.color;
+  document.getElementById('sis-desc').textContent = band.desc;
+  document.getElementById('maxim').textContent = '"'+MAXIMS[Math.floor(Math.random()*MAXIMS.length)]+'"';
+
+  const ip = s.total>0?Math.round(s.done/s.total*100):0;
+  const cp = s.critTotal>0?Math.round(s.critDone/s.critTotal*100):0;
+  const op = Math.round(s.openDone/s.openTotal*100);
+  document.getElementById('stat-items').textContent = s.done+'/'+s.total;
+  document.getElementById('stat-crit').textContent = s.critDone+'/'+s.critTotal;
+  document.getElementById('stat-open').textContent = (s.openTotal-s.openDone);
+  document.getElementById('stat-open').style.color = s.openDone===s.openTotal?'var(--green)':'var(--amber)';
+  document.getElementById('bar-items').style.width = ip+'%';
+  document.getElementById('bar-crit').style.width = cp+'%';
+  document.getElementById('bar-open').style.width = op+'%';
+  document.getElementById('bar-open').style.background = s.openDone===s.openTotal?'var(--green)':'var(--amber)';
+
+  const openLeft = OPEN_VARS.filter(v=>!state.openResolved[v.id]);
+  const ao = document.getElementById('alert-open');
+  ao.style.display = openLeft.length>0?'block':'none';
+  document.getElementById('alert-open-text').textContent = openLeft.length+' item'+(openLeft.length>1?'s':'')+' unresolved. Each creates downstream friction if left open.';
+
+  const ac = document.getElementById('alert-crit');
+  const critLeft = s.critTotal-s.critDone;
+  ac.style.display = critLeft>0?'block':'none';
+  document.getElementById('alert-crit-text').textContent = critLeft+' CRITICAL ITEMS OUTSTANDING';
+
+  document.getElementById('alert-ready').style.display = sis>=85?'block':'none';
+
+  // Checklist summary
+  let html = '';
+  Object.entries(CL).forEach(([key,cl]) => {
+    const items = cl.categories.flatMap(c=>c.items);
+    const d = items.filter(i=>state.checked[i.id]).length;
+    const t = items.length;
+    const p = Math.round(d/t*100);
+    html += `<div onclick="switchTab('checklists')" style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;cursor:pointer">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px">${cl.icon} ${cl.label}</span>
+        <span class="mono" style="font-size:11px;color:${p===100?'var(--green)':'var(--blue)'}">${d}/${t} ${p===100?'✓':''}</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="background:${p===100?'var(--green)':'var(--blue)'};width:${p}%"></div></div>
+    </div>`;
+  });
+  document.getElementById('cl-summary').innerHTML = html;
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.nav button').forEach(b=>{b.classList.remove('active');if(b.dataset.tab===id)b.classList.add('active');});
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  currentTab=id;
+  if(id==='dashboard')renderDashboard();
+  if(id==='speech')renderSpeech();
+}
+
+// RENDER: TIMELINE
+function renderTimeline() {
+  let html = '';
+  TIMELINE.forEach((day,di) => {
+    html += `<div style="margin-bottom:16px">
+      <button onclick="toggleDay(${di})" id="day-btn-${di}" style="width:100%;text-align:left;background:var(--bg-mid);border:1px solid var(--border);border-radius:10px;padding:16px 18px;color:var(--text);cursor:pointer;font-family:Georgia,serif;transition:all 0.3s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="font-size:22px">${day.icon}</span>
+            <div>
+              <div class="mono" style="font-size:11px;font-weight:700;color:${day.accent};letter-spacing:2px">${day.day}</div>
+              <div style="font-size:14px;margin-top:2px">${day.label}</div>
+            </div>
+          </div>
+          <span class="mono" style="font-size:12px;color:var(--text-muted)">${day.events.length} ▼</span>
+        </div>
+      </button>
+      <div id="day-${di}" style="display:none;background:var(--bg-deep);border:1px solid ${day.accent}33;border-top:none;border-radius:0 0 10px 10px;padding:8px 18px 16px">
+        <div style="padding:10px 14px;margin-bottom:12px;margin-top:8px;border-left:2px solid ${day.accent};font-size:12px;font-style:italic;color:var(--sand);line-height:1.5">${esc(day.brodcode)}</div>
+        ${day.events.map((ev,ei) => `<div style="display:flex;gap:14px;padding:10px 0;${ei<day.events.length-1?'border-bottom:1px solid #1A2332':''}">
+          <div class="mono" style="font-size:10px;color:${day.accent};font-weight:700;min-width:85px;flex-shrink:0;padding-top:2px">${ev.time}</div>
+          <div>
+            <div style="font-size:13px;line-height:1.4">${esc(ev.text)}</div>
+            ${ev.tip?`<div style="font-size:11px;margin-top:3px;line-height:1.3;color:${ev.tip.startsWith('⚠️')?'var(--amber)':'#5A7080'};font-style:${ev.tip.startsWith('⚠️')?'normal':'italic'}">${esc(ev.tip)}</div>`:''}
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  });
+  document.getElementById('timeline-list').innerHTML = html;
+}
+let openDay = -1;
+window.toggleDay = function(di) {
+  if(openDay===di) { document.getElementById('day-'+di).style.display='none'; openDay=-1; return; }
+  if(openDay>=0) document.getElementById('day-'+openDay).style.display='none';
+  document.getElementById('day-'+di).style.display='block';
+  document.getElementById('day-btn-'+di).style.borderRadius='10px 10px 0 0';
+  if(openDay>=0) document.getElementById('day-btn-'+openDay).style.borderRadius='10px';
+  openDay=di;
+};
+
+// RENDER: CHECKLISTS
+function renderChecklists() {
+  let tabs='', content='';
+  Object.entries(CL).forEach(([key,cl]) => {
+    const items = cl.categories.flatMap(c=>c.items);
+    const d = items.filter(i=>state.checked[i.id]).length;
+    const t = items.length;
+    tabs += `<button onclick="document.getElementById('cl-${key}').scrollIntoView({behavior:'smooth'})" style="padding:8px 16px;background:${d===t?'#1A2E25':'var(--bg-card)'};border:1px solid ${d===t?'#2D5A45':'var(--border)'};border-radius:6px;color:${d===t?'var(--green)':'var(--text)'};font-size:11px;font-family:'Courier New',monospace;letter-spacing:1px;cursor:pointer">${cl.icon} ${cl.label} (${d}/${t})</button>`;
+
+    content += `<div id="cl-${key}" style="margin-bottom:32px">
+      <div class="mono" style="font-size:12px;color:var(--sand);letter-spacing:3px;border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:14px">${cl.icon} ${cl.label.toUpperCase()}</div>`;
+    cl.categories.forEach((cat,ci) => {
+      const cd = cat.items.filter(i=>state.checked[i.id]).length;
+      const ct = cat.items.length;
+      const ck = key+'-'+ci;
+      content += `<div style="margin-bottom:8px">
+        <button onclick="toggleCat('${ck}')" style="width:100%;text-align:left;background:${cd===ct?'#1A2E25':'var(--bg-mid)'};border:1px solid ${cd===ct?'#2D5A4533':'var(--border)'};border-radius:8px;padding:11px 16px;color:var(--text);cursor:pointer;font-family:Georgia,serif">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px">${cd===ct?'<span style="color:var(--green);margin-right:6px">✓</span>':''}${esc(cat.name)}</span>
+            <span class="mono" style="font-size:10px;color:var(--text-muted)">${cd}/${ct} ▼</span>
+          </div>
+        </button>
+        <div id="cat-${ck}" style="padding:6px 4px">
+          ${cat.items.map(item => {
+            const done = state.checked[item.id];
+            return `<label class="check-item ${done?'done':''}" id="ci-${item.id}">
+              <input type="checkbox" ${done?'checked':''} onchange="toggleCheck('${item.id}')">
+              <span class="label ${item.c&&!done?'critical':''}">${item.c&&!done?'★ ':''}${esc(item.text)}</span>
+            </label>`;
+          }).join('')}
+        </div>
+      </div>`;
+    });
+    content += '</div>';
+  });
+  document.getElementById('cl-tabs').innerHTML = tabs;
+  document.getElementById('cl-content').innerHTML = content;
+}
+window.toggleCheck = function(id) {
+  state.checked[id] = !state.checked[id];
+  saveState();
+  renderChecklists();
+  renderDashboard();
+};
+window.toggleCat = function(ck) {
+  const el = document.getElementById('cat-'+ck);
+  el.style.display = el.style.display==='none'?'block':'none';
+};
+
+// RENDER: REFS
+function renderRefs() {
+  let html = '';
+  REFS.forEach(ref => {
+    html += `<div style="background:var(--bg-mid);border:1px solid var(--border);border-left:3px solid ${ref.accent};border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+        <div class="mono" style="font-size:10px;font-weight:700;color:${ref.accent};letter-spacing:3px">${ref.title}</div>
+        <div class="mono" style="font-size:10px;color:var(--text-dim);letter-spacing:1px">${ref.date}</div>
+      </div>
+      ${ref.items.map((item,ii) => `<div style="display:flex;gap:12px;padding:5px 0;${ii<ref.items.length-1?'border-bottom:1px solid #1A2332':''}">
+        <span class="mono" style="font-size:10px;color:var(--text-muted);min-width:95px;flex-shrink:0">${item.l}</span>
+        <span style="font-size:12px;color:var(--text)">${esc(item.v)}</span>
+      </div>`).join('')}
+    </div>`;
+  });
+  document.getElementById('refs-content').innerHTML = html;
+
+  // Open variables
+  let ov = `<div style="background:var(--bg-mid);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:16px">
+    <div class="mono" style="font-size:10px;font-weight:700;color:var(--amber);letter-spacing:3px;margin-bottom:12px">OPEN VARIABLES</div>`;
+  OPEN_VARS.forEach(v => {
+    const done = state.openResolved[v.id];
+    ov += `<label style="display:flex;align-items:center;gap:12px;padding:8px 4px;cursor:pointer;border-bottom:1px solid #1A2332">
+      <input type="checkbox" ${done?'checked':''} onchange="toggleOpenVar('${v.id}')" style="width:18px;height:18px;accent-color:var(--green);flex-shrink:0">
+      <span style="font-size:13px;color:${done?'var(--green)':'var(--amber)'};text-decoration:${done?'line-through':'none'};opacity:${done?0.5:1}">${esc(v.text)}</span>
+    </label>`;
+  });
+  ov += '</div>';
+  document.getElementById('open-vars-card').innerHTML = ov;
+}
+window.toggleOpenVar = function(id) {
+  state.openResolved[id] = !state.openResolved[id];
+  saveState();
+  renderRefs();
+  renderDashboard();
+};
+
+// RENDER: SPEECH
+let speechMode = 'reflect';
+let openPrompt = null;
+
+function renderSpeech() {
+  const answered = REFLECTIONS.filter(r => state.speechAnswers[r.id]&&state.speechAnswers[r.id].trim()).length;
+  const total = REFLECTIONS.length;
+
+  document.getElementById('speech-intro').textContent = speechMode==='reflect'
+    ? "Answer these during downtime. Airport, hotel, quiet moments. The structure is built. Your answers become the speech."
+    : "This is your assembled speech built from your reflections. Sections you haven't answered yet use the template. Wednesday: finalize and lock in.";
+
+  // Toggle
+  document.getElementById('speech-toggle').innerHTML = ['reflect','preview'].map(m => {
+    const sub = m==='reflect' ? answered+'/'+total+' answered' : 'Assembled speech';
+    return `<button onclick="setSpeechMode('${m}')" style="flex:1;padding:12px 16px;border:none;background:${speechMode===m?'var(--bg-header)':'var(--bg-deep)'};color:${speechMode===m?'var(--text-bright)':'var(--text-muted)'};font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;cursor:pointer;${m==='reflect'?'border-right:1px solid var(--border)':''}">
+      <div style="font-weight:700">${m.toUpperCase()}</div>
+      <div style="font-size:9px;margin-top:4px;color:${speechMode===m?'var(--sand)':'var(--text-faint)'}">${sub}</div>
+    </button>`;
+  }).join('');
+
+  if(speechMode==='reflect') renderReflect();
+  else renderPreview();
+
+  document.getElementById('speech-reflect').style.display = speechMode==='reflect'?'block':'none';
+  document.getElementById('speech-preview').style.display = speechMode==='preview'?'block':'none';
+}
+
+function renderReflect() {
+  const answered = REFLECTIONS.filter(r=>state.speechAnswers[r.id]&&state.speechAnswers[r.id].trim()).length;
+  const pct = Math.round(answered/REFLECTIONS.length*100);
+  let html = `<div style="margin-bottom:20px">
+    <div class="mono" style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-bottom:6px">
+      <span>REFLECTION PROGRESS</span><span>${answered}/${REFLECTIONS.length} · ${pct}%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${pct===100?'var(--green)':'var(--sand)'}"></div></div>
+  </div>`;
+
+  ['THE FRIENDSHIP','WHO TIMMY IS','TIMMY AND NIKKI','THE CLOSE'].forEach(cat => {
+    html += `<div style="margin-bottom:24px">
+      <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--blue);border-bottom:1px solid var(--border-light);padding-bottom:6px;margin-bottom:12px">${cat}</div>`;
+    REFLECTIONS.filter(r=>r.cat===cat).forEach(r => {
+      const isOpen = openPrompt===r.id;
+      const has = state.speechAnswers[r.id]&&state.speechAnswers[r.id].trim();
+      const preview = has ? state.speechAnswers[r.id].substring(0,120)+(state.speechAnswers[r.id].length>120?'...':'') : '';
+      html += `<div style="margin-bottom:10px">
+        <button onclick="togglePrompt('${r.id}')" style="width:100%;text-align:left;background:${has?'#1A2E25':isOpen?'var(--bg-card)':'var(--bg-mid)'};border:1px solid ${has?'#2D5A4533':isOpen?'rgba(196,154,108,0.27)':'var(--border)'};border-radius:${isOpen?'8px 8px 0 0':'8px'};padding:12px 16px;cursor:pointer;font-family:Georgia,serif;color:var(--text);transition:all 0.2s">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div style="display:flex;gap:12px;align-items:flex-start;flex:1">
+              <span class="mono" style="font-size:9px;color:${has?'var(--green)':'var(--text-muted)'};font-weight:700;min-width:20px;padding-top:3px">${has?'✓':r.n}</span>
+              <div>
+                <div style="font-size:13px;line-height:1.5;color:${has?'var(--text-dim)':'var(--text)'}">${esc(r.prompt)}</div>
+                ${has&&!isOpen?`<div style="font-size:11px;color:#5A7A6A;margin-top:6px;font-style:italic;line-height:1.4;max-height:40px;overflow:hidden">${esc(preview)}</div>`:''}
+              </div>
+            </div>
+            <span style="font-size:10px;color:var(--text-muted);flex-shrink:0;padding-top:3px">${isOpen?'▲':'▼'}</span>
+          </div>
+        </button>
+        ${isOpen?`<div style="background:var(--bg-deep);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:14px 16px">
+          <div style="font-size:11px;color:#5A7080;font-style:italic;margin-bottom:10px;line-height:1.5">${esc(r.hint)}</div>
+          <div class="mono" style="font-size:9px;color:var(--text-faint);margin-bottom:8px;letter-spacing:1px">USED IN: ${r.use}</div>
+          <textarea id="ta-${r.id}" oninput="saveSpeechAnswer('${r.id}',this.value)" placeholder="Type your answer here...">${esc(state.speechAnswers[r.id]||'')}</textarea>
+          ${has?`<div class="mono" style="font-size:10px;color:var(--text-muted);margin-top:6px">${state.speechAnswers[r.id].trim().split(/\\s+/).length} words</div>`:''}
+        </div>`:''}
+      </div>`;
+    });
+    html += '</div>';
+  });
+
+  if(answered>=3) {
+    html += `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center;margin-top:8px">
+      <div style="font-size:12px;color:var(--sand);margin-bottom:8px">You have enough material to see your speech taking shape.</div>
+      <button onclick="setSpeechMode('preview')" class="mono" style="padding:8px 24px;background:var(--bg-header);border:1px solid rgba(196,154,108,0.27);border-radius:6px;color:var(--text-bright);font-size:11px;letter-spacing:2px;cursor:pointer">VIEW PREVIEW</button>
+    </div>`;
+  }
+  document.getElementById('speech-reflect').innerHTML = html;
+}
+
+function renderPreview() {
+  const a = state.speechAnswers;
+  const has = (id) => a[id]&&a[id].trim().length>0;
+  const sections = [];
+
+  sections.push({label:"OPENING",text:`For those who don't know me, I'm Mac. I've had the privilege of standing next to Timmy through a lot of life.${has("r_origin")?' We met '+a.r_origin.trim().substring(0,200)+(a.r_origin.trim().length>200?'...':'')+'.':''} And I don't say that lightly, because Timmy is not a small-talk kind of friend. He's the kind of friend who shows up when the situation is real and stays after the situation gets hard.`,filled:true});
+
+  if(has("r_firstread")||has("r_character")) sections.push({label:"WHO HE IS",text:has("r_character")?a.r_character.trim():a.r_firstread.trim(),filled:true,src:has("r_character")?"From: Character description":"From: First impression"});
+  else sections.push({label:"WHO HE IS",text:"There's a thing I've learned about people over the years. Most people talk about loyalty. Timmy just does it. He doesn't announce it. He doesn't keep score. He just shows up, consistently, in a way that makes the people around him better.",filled:true});
+
+  if(has("r_loyalty")) sections.push({label:"THE STORY",text:a.r_loyalty.trim(),filled:true,src:"From: A time he showed up"});
+  else sections.push({label:"THE STORY",text:"[Waiting for your answer to: 'Describe a time Timmy showed up for you when it mattered.']",filled:false});
+
+  if(has("r_funny")) sections.push({label:"THE LIGHTER MOMENT",text:a.r_funny.trim(),filled:true,src:"From: Funniest moment"});
+
+  sections.push({label:"THE TRANSITION",text:"That's who he is. And I think that's exactly why Nikki saw what the rest of us already knew. Timmy doesn't build things halfway. When he commits, he builds something that lasts.",filled:true});
+
+  if(has("r_nikki_effect")||has("r_nikki_first")) sections.push({label:"WHAT NIKKI BROUGHT OUT",text:has("r_nikki_effect")?a.r_nikki_effect.trim():"When Timmy first mentioned Nikki, "+a.r_nikki_first.trim(),filled:true,src:has("r_nikki_effect")?"From: Nikki's impact":"From: First hearing about Nikki"});
+  else sections.push({label:"WHAT NIKKI BROUGHT OUT",text:"I've watched him become more grounded, more intentional, and honestly more himself since Nikki came into his life. That's not something every relationship does. Some relationships ask you to become someone else. This one asked Timmy to become more of who he already was. That's rare. And it's worth celebrating.",filled:true});
+
+  if(has("r_couple")) sections.push({label:"THE COUPLE MOMENT",text:a.r_couple.trim(),filled:true,src:"From: A moment between them"});
+
+  sections.push({label:"TO TIMMY",text:"Timmy, you picked someone who sees you clearly and chose you anyway. That's the whole game.",filled:true});
+
+  if(has("r_nikki_direct")) sections.push({label:"TO NIKKI",text:"Nikki, "+a.r_nikki_direct.trim(),filled:true,src:"From: What you'd say to Nikki"});
+  else sections.push({label:"TO NIKKI",text:"Nikki, you're getting a man who will protect what you build together with everything he has. I can tell you that from experience, because he's done it for every person he's ever cared about.",filled:true});
+
+  sections.push({label:"THE TOAST",text:"So if everyone could raise a glass.",filled:true});
+
+  if(has("r_toast")) sections.push({label:"CLOSING",text:"To Timmy and Nikki. "+a.r_toast.trim()+" Cheers.",filled:true,src:"From: What you wish for them"});
+  else sections.push({label:"CLOSING",text:"To Timmy and Nikki. To building something real. To showing up. And to the kind of love that makes people better instead of smaller. Cheers.",filled:true});
+
+  const unfilled = sections.filter(s=>!s.filled);
+  const words = sections.reduce((sum,s)=>sum+s.text.split(/\s+/).length,0);
+
+  let html = '';
+  if(unfilled.length>0) {
+    html += `<div style="background:#1E2A1E;border:1px solid #3D5A2E;border-left:3px solid var(--amber);border-radius:8px;padding:14px;margin-bottom:20px">
+      <div class="mono" style="font-size:10px;color:var(--amber);letter-spacing:2px;margin-bottom:6px">${unfilled.length} SECTION${unfilled.length>1?'S':''} NEED YOUR MATERIAL</div>
+      ${unfilled.map(s=>`<div style="font-size:11px;color:var(--text-dim);padding:2px 0">· ${s.label}</div>`).join('')}
+      <button onclick="setSpeechMode('reflect')" class="mono" style="margin-top:10px;padding:6px 16px;background:transparent;border:1px solid #3D5A2E;border-radius:4px;color:var(--green);font-size:10px;cursor:pointer">BACK TO REFLECT</button>
+    </div>`;
+  }
+
+  sections.forEach(s => {
+    html += `<div style="padding:14px 18px;margin-bottom:8px;background:${!s.filled?'#1E2235':'var(--bg-mid)'};border:1px solid ${!s.filled?'rgba(91,95,160,0.4)':'var(--border)'};border-left:${!s.filled?'3px solid var(--purple)':s.src?'3px solid #2D5A45':'3px solid transparent'};border-radius:8px">
+      <div class="mono" style="font-size:9px;color:${!s.filled?'var(--purple)':'var(--text-muted)'};letter-spacing:2px;margin-bottom:8px">${s.label}</div>
+      <div style="font-size:14px;line-height:1.8;color:${!s.filled?'#A89BD4':'var(--text)'};font-style:${!s.filled?'italic':'normal'}">${esc(s.text)}</div>
+      ${s.src?`<div class="mono" style="font-size:9px;color:#3D5A45;margin-top:8px">${s.src}</div>`:''}
+    </div>`;
+  });
+
+  html += `<div class="mono" style="margin-top:16px;padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted)">
+    <span>EST. WORD COUNT: ${words}</span>
+    <span>EST. TIME: ${Math.max(1,Math.round(words/130))} min</span>
+  </div>`;
+
+  html += `<div style="margin-top:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:16px">
+    <div class="mono" style="font-size:10px;color:var(--sand);letter-spacing:2px;margin-bottom:10px">DELIVERY NOTES</div>
+    <div style="font-size:12px;color:var(--text-dim);line-height:1.8">Speak slowly. Pause after the story. Make eye contact with Timmy during direct address. Make eye contact with the room during the toast. Do not read word for word. Know the structure, deliver it conversationally. Max 2 drinks before this.</div>
+  </div>`;
+
+  html += `<div style="margin-top:16px;text-align:center;padding:16px 0;border-top:1px solid var(--border)">
+    <div style="font-size:11px;color:var(--blue);font-style:italic">Wednesday evening: review this preview, finalize your answers, read it aloud once.</div>
+    <div class="mono" style="font-size:9px;color:var(--text-faint);margin-top:6px;letter-spacing:2px">COMPLETION OVER PERFECTION</div>
+  </div>`;
+
+  document.getElementById('speech-preview').innerHTML = html;
+}
+
+window.setSpeechMode = function(m) { speechMode=m; renderSpeech(); };
+window.togglePrompt = function(id) { openPrompt = openPrompt===id?null:id; renderReflect(); setTimeout(()=>{const ta=document.getElementById('ta-'+id);if(ta)ta.focus();},50); };
+window.saveSpeechAnswer = function(id,val) { state.speechAnswers[id]=val; saveState(); };
+
+// COUNTDOWN
+const CEREMONY_TIME = new Date('2026-04-10T16:30:00-07:00'); // 4:30 PM Pacific
+function renderCountdown() {
+  const now = new Date();
+  const diff = CEREMONY_TIME - now;
+  const box = document.getElementById('countdown-display');
+  const note = document.getElementById('countdown-note');
+
+  if(diff <= 0) {
+    box.innerHTML = '<div style="font-size:20px;color:var(--green)">Ceremony Time</div>';
+    note.textContent = '';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const secs = Math.floor((diff % (1000*60)) / 1000);
+
+  const units = [
+    {val:days, label:'DAYS'},
+    {val:hours, label:'HRS'},
+    {val:mins, label:'MIN'},
+    {val:secs, label:'SEC'},
+  ];
+
+  box.innerHTML = units.map(u => `<div style="text-align:center">
+    <div style="font-size:28px;color:var(--text-bright);font-family:Georgia,serif;line-height:1">${String(u.val).padStart(2,'0')}</div>
+    <div class="mono" style="font-size:8px;color:var(--text-muted);letter-spacing:2px;margin-top:4px">${u.label}</div>
+  </div>`).join('<div style="font-size:20px;color:var(--border);padding-top:2px">:</div>');
+
+  if(days === 0) note.textContent = 'TODAY. Be present.';
+  else if(days === 1) note.textContent = 'Tomorrow. Final prep tonight.';
+  else if(days <= 3) note.textContent = 'Fri Apr 10, 4:30 PM Pacific at Tower Beach Club';
+  else note.textContent = 'Fri Apr 10, 4:30 PM Pacific at Tower Beach Club';
+}
+setInterval(renderCountdown, 1000);
+
+// NOTES / REMINDERS
+function addNote() {
+  const input = document.getElementById('note-input');
+  const due = document.getElementById('note-due');
+  const text = input.value.trim();
+  if(!text) return;
+
+  state.notes.push({
+    id: 'n_' + Date.now(),
+    text: text,
+    due: due.value || null,
+    done: false,
+    created: new Date().toISOString(),
+  });
+  saveState();
+  input.value = '';
+  due.value = '';
+  renderNotes();
+}
+window.addNote = addNote;
+
+// Allow enter key to add note
+document.addEventListener('DOMContentLoaded', function() {
+  const ni = document.getElementById('note-input');
+  if(ni) ni.addEventListener('keydown', function(e) { if(e.key==='Enter') addNote(); });
+});
+
+window.toggleNote = function(id) {
+  const n = state.notes.find(n=>n.id===id);
+  if(n) n.done = !n.done;
+  saveState();
+  renderNotes();
+};
+
+window.deleteNote = function(id) {
+  state.notes = state.notes.filter(n=>n.id!==id);
+  saveState();
+  renderNotes();
+};
+
+function formatDue(dateStr) {
+  if(!dateStr) return '';
+  const d = new Date(dateStr + 'T12:00:00');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  return days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate();
+}
+
+function isDueOverdue(dateStr) {
+  if(!dateStr) return false;
+  const due = new Date(dateStr + 'T23:59:59');
+  return new Date() > due;
+}
+
+function isDueToday(dateStr) {
+  if(!dateStr) return false;
+  const today = new Date().toISOString().split('T')[0];
+  return dateStr === today;
+}
+
+function renderNotes() {
+  const active = state.notes.filter(n=>!n.done).sort((a,b) => {
+    // Sort: overdue first, then by due date, then no-date last
+    if(a.due && !b.due) return -1;
+    if(!a.due && b.due) return 1;
+    if(a.due && b.due) return a.due.localeCompare(b.due);
+    return 0;
+  });
+  const done = state.notes.filter(n=>n.done);
+
+  let html = '';
+  if(active.length === 0) {
+    html = '<div style="text-align:center;padding:20px;color:var(--text-muted);font-style:italic;font-size:13px">No active notes. Add one above as things come up.</div>';
+  } else {
+    active.forEach(n => {
+      const overdue = isDueOverdue(n.due);
+      const today = isDueToday(n.due);
+      const dueBadgeColor = overdue ? 'var(--coral)' : today ? 'var(--amber)' : 'var(--blue)';
+      const dueBadgeText = overdue ? 'OVERDUE' : today ? 'TODAY' : '';
+      html += `<div style="background:var(--bg-mid);border:1px solid ${overdue?'rgba(224,122,95,0.3)':today?'rgba(232,185,96,0.3)':'var(--border)'};border-left:3px solid ${overdue?'var(--coral)':today?'var(--amber)':'var(--border)'};border-radius:8px;padding:12px 14px;margin-bottom:8px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <input type="checkbox" onchange="toggleNote('${n.id}')" style="width:18px;height:18px;margin-top:2px;accent-color:var(--green);flex-shrink:0;cursor:pointer">
+          <div style="flex:1">
+            <div style="font-size:13px;line-height:1.5">${esc(n.text)}</div>
+            ${n.due ? `<div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+              <span class="mono" style="font-size:10px;color:${dueBadgeColor}">${formatDue(n.due)}</span>
+              ${dueBadgeText ? `<span class="mono" style="font-size:8px;letter-spacing:1px;color:${dueBadgeColor};font-weight:700">${dueBadgeText}</span>` : ''}
+            </div>` : ''}
+          </div>
+          <button onclick="deleteNote('${n.id}')" style="background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:14px;padding:0 4px;flex-shrink:0" title="Delete">×</button>
+        </div>
+      </div>`;
+    });
+  }
+  document.getElementById('notes-active').innerHTML = html;
+
+  // Completed
+  const doneSection = document.getElementById('notes-done-section');
+  if(done.length > 0) {
+    doneSection.style.display = 'block';
+    document.getElementById('notes-done').innerHTML = done.map(n => `<div style="display:flex;align-items:center;gap:12px;padding:8px 14px;margin-bottom:4px;opacity:0.4">
+      <input type="checkbox" checked onchange="toggleNote('${n.id}')" style="width:16px;height:16px;accent-color:var(--green);flex-shrink:0;cursor:pointer">
+      <span style="font-size:12px;text-decoration:line-through;color:var(--text-muted);flex:1">${esc(n.text)}</span>
+      <button onclick="deleteNote('${n.id}')" style="background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:14px;padding:0 4px" title="Delete">×</button>
+    </div>`).join('');
+  } else {
+    doneSection.style.display = 'none';
+  }
+}
+
+// INIT
+renderCountdown();
+renderDashboard();
+renderTimeline();
+renderChecklists();
+renderRefs();
+renderSpeech();
+renderNotes();
+</script>
+</body>
+</html>
