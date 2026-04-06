@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>TEAM TIM</title>
+<style>
+:root{--bg:#0B1219;--bm:#111B26;--bc:#15202E;--bh:#1C2E42;--bd:#2E4560;--tx:#E0E8F0;--td:#8FA5B8;--tm:#5A7488;--tf:#40586A;--tb:#F8F2EA;--sn:#D4A870;--bl:#68B4E0;--gn:#88D4AC;--am:#F0C868;--co:#E88868;--rd:#E05858}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,serif;background:linear-gradient(180deg,#141E2A,var(--bg) 40%,var(--bc));color:var(--tx);min-height:100vh;-webkit-font-smoothing:antialiased}
+.m{font-family:'Courier New',monospace}
+a{color:var(--bl);text-decoration:none}
+.nav{display:flex;background:var(--bg);border-bottom:1px solid var(--bh);position:sticky;top:0;z-index:100;overflow-x:auto}
+.nav button{flex:1 0 auto;padding:11px 7px;background:0;border:none;border-bottom:2px solid transparent;color:var(--tm);font-size:10px;letter-spacing:1.2px;cursor:pointer;font-family:'Courier New',monospace}
+.nav button.a{color:var(--tb);border-bottom-color:var(--sn)}
+.tab{display:none}.tab.a{display:block}
+.cd{background:var(--bm);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.ei{width:100%;padding:6px 8px;background:var(--bg);border:1px solid var(--bd);border-radius:4px;color:var(--tx);font-family:Georgia,serif;font-size:12px;outline:none}
+.ei:focus{border-color:var(--sn)}
+.ev{padding:7px 11px;margin-top:3px;border-radius:5px;border-left:3px solid transparent}
+.fl{border-left-color:var(--bl);background:rgba(104,180,224,0.06)}
+.tbd{border-left-color:var(--am);background:rgba(240,200,104,0.08)}
+.sp{border-left-color:var(--am);background:rgba(240,200,104,0.1)}
+.pad{width:100%;min-height:180px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-family:Georgia,serif;font-size:13px;line-height:1.7;resize:vertical;outline:none}
+.pad:focus{border-color:var(--sn)}
+.pad::placeholder{color:var(--tf)}
+</style>
+</head>
+<body>
+
+<div style="background:linear-gradient(135deg,var(--bh),var(--bg));border-bottom:1px solid var(--bd);padding:15px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div><div class="m" style="font-size:9px;letter-spacing:4px;color:var(--bl);font-weight:700">OPERATION</div>
+<div style="font-size:21px;color:var(--tb);letter-spacing:2px">TEAM TIM</div>
+<div style="font-size:10px;color:var(--td);margin-top:2px">Timmy & Nikki · San Diego · Apr 7-11</div></div>
+<div style="text-align:right"><div id="sis-n" style="font-size:26px;line-height:1">0</div>
+<div id="sis-l" class="m" style="font-size:9px;letter-spacing:2px;font-weight:700"></div></div></div></div>
+
+<div class="nav">
+<button data-t="hq" class="a">HQ</button>
+<button data-t="wk">WEEK</button>
+<button data-t="cl">CHECK</button>
+<button data-t="sp">SPEECH</button>
+<button data-t="no">NOTES</button>
+<button data-t="lt">NOTE</button>
+<button data-t="rf">INTEL</button>
+</div>
+
+<div style="padding:15px 14px 100px">
+
+<!-- HQ -->
+<div class="tab a" id="t-hq">
+<div style="text-align:center;padding:13px 16px;margin-bottom:13px;background:linear-gradient(135deg,var(--bc),var(--bh));border:1px solid var(--bd);border-radius:10px">
+<div class="m" style="font-size:9px;letter-spacing:3px;color:var(--bl);margin-bottom:7px">CEREMONY COUNTDOWN</div>
+<div id="cd-d"></div>
+<div class="m" style="font-size:9px;color:var(--tm);margin-top:6px">Fri Apr 10 · 4:30 PM PT</div></div>
+<div style="text-align:center;padding:9px 14px;margin-bottom:13px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+<div id="mx" style="font-size:11px;font-style:italic;color:var(--sn)"></div></div>
+<div class="cd" style="padding:13px;text-align:center;margin-bottom:13px">
+<div style="position:relative;width:100%;height:6px;background:var(--bg);border-radius:3px;margin-bottom:6px"><div id="sis-b" style="position:absolute;left:0;top:0;height:100%;width:0%;border-radius:3px;background:linear-gradient(90deg,var(--rd),var(--am) 50%,var(--gn));transition:width 0.5s"></div></div>
+<div id="sis-d" class="m" style="font-size:10px"></div></div>
+<div class="cd" style="border-left:3px solid var(--bl);margin-bottom:13px;padding:10px 13px">
+<div class="m" style="font-size:8px;color:var(--bl);letter-spacing:2px;margin-bottom:4px">WEATHER APR 7-11</div>
+<div style="font-size:11px;color:var(--td);line-height:1.6">68-71F days · 56-60F nights · Sunrise 6:27 · Sunset 7:13 · Fog til 10 AM · Layers + sunscreen</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:13px">
+<div class="cd" style="text-align:center;border-left:3px solid var(--bl);padding:9px"><div class="m" style="font-size:8px;color:var(--tm)">ITEMS</div><div id="s-i" style="font-size:17px;color:var(--bl);margin-top:2px"></div></div>
+<div class="cd" style="text-align:center;border-left:3px solid var(--co);padding:9px"><div class="m" style="font-size:8px;color:var(--tm)">CRIT</div><div id="s-c" style="font-size:17px;color:var(--co);margin-top:2px"></div></div>
+<div class="cd" style="text-align:center;border-left:3px solid var(--am);padding:9px"><div class="m" style="font-size:8px;color:var(--tm)">OPEN</div><div id="s-o" style="font-size:17px;margin-top:2px"></div></div></div>
+<div id="alerts"></div>
+<div id="cl-sum"></div>
+<div class="cd" style="margin-top:13px;border-left:3px solid var(--sn)">
+<div class="m" style="font-size:9px;color:var(--sn);letter-spacing:2px;margin-bottom:6px">KEY LOCATIONS</div>
+<div style="font-size:12px;line-height:2.2">
+<a href="https://maps.apple.com/?q=Wyndham+San+Diego+Bayside" target="_blank">Wyndham San Diego Bayside</a><br>
+<a href="https://maps.apple.com/?daddr=998+W+Mission+Bay+Dr+San+Diego+CA+92109" target="_blank">Bahia Resort Hotel</a><br>
+<a href="https://maps.apple.com/?daddr=1010+Santa+Clara+Pl+San+Diego+CA+92109" target="_blank">Tower Beach Club (Wedding)</a><br>
+<a href="https://maps.apple.com/?daddr=2731+Worden+St+San+Diego+CA+92110" target="_blank">Timmy's Apartment</a><br>
+<a href="https://maps.apple.com/?q=Puesto+Mission+Valley+San+Diego" target="_blank">Puesto (Thu Dinner)</a><br>
+<a href="https://maps.apple.com/?daddr=3355+Admiral+Boland+Way+San+Diego+CA+92101" target="_blank">Enterprise SAN Airport</a><br>
+<a href="https://maps.apple.com/?q=Mt+Soledad+La+Jolla+CA" target="_blank">Mt Soledad</a><br>
+<a href="https://maps.apple.com/?q=Self+Realization+Fellowship+Encinitas" target="_blank">SRF Gardens Encinitas</a><br>
+<a href="https://maps.apple.com/?q=Sunset+Cliffs+Natural+Park+San+Diego" target="_blank">Sunset Cliffs</a><br>
+<a href="https://maps.apple.com/?q=Mission+Beach+San+Diego" target="_blank">Mission Beach</a>
+</div></div>
+<button onclick="if(confirm('Reset all?')){localStorage.removeItem('tt8');location.reload()}" class="m" style="margin-top:12px;padding:6px 12px;background:0;border:1px solid var(--bd);border-radius:5px;color:var(--tm);font-size:8px;letter-spacing:2px;cursor:pointer">RESET</button>
+</div>
+
+<!-- WEEK -->
+<div class="tab" id="t-wk"><div id="wk-l"></div></div>
+
+<!-- CHECK -->
+<div class="tab" id="t-cl"><div id="cl-c"></div></div>
+
+<!-- SPEECH -->
+<div class="tab" id="t-sp">
+<div style="border-left:2px solid var(--sn);padding:7px 11px;margin-bottom:13px;font-size:10px;color:var(--sn);font-style:italic">~550 words · ~4.5 min · After sunset photos ~7:30 PM</div>
+<div style="background:linear-gradient(135deg,#161A28,#121624);border:1px solid #2A3048;border-radius:10px;padding:20px 16px;font-size:14px;line-height:2.1;color:#D0CCE0;white-space:pre-wrap">I'm Mac. I'm Timmy's co best man.
+
+We go back to SIR. I'm two years older. I am not wiser. More experience, yes. More mistakes, yes.
+
+Tim had this long hair he'd swing out of his eyes every time he walked through the lobby. That's the first thing I ever knew about him.
+
+We loved hockey. Liked exploring music and ideas. But hockey is where it started. If you know Timmy through hockey, raise your hand. Take a drink. You earned it.
+
+Eventually we were both in beer league, and somewhere along the way most people started assuming he was my little brother. Can't imagine why.
+
+He also knocked two of my teeth out.
+
+Pickup skate. I made a dumb play to try and stop him. Timmy dangles. You get in the way of that, you pay for it. Only two. Only on my bad side. Ruined the whole vibe of the skate.
+
+I got over it before I sat down in the dentist's chair. Tim, if you're still carrying that, tonight you let it go.
+
+Anyone who's played with him would tell you the same thing. Great sportsmanship. Positive attitude. Could play forward or defense and outplay most guys at either. You could push him off the puck if you caught him. Good luck catching him.
+
+He's apologetic when he's right. He could correct anyone in the room but that's not how he works. He wants the people around him to feel capable and included. That's Tim. He's never once needed to be sorry for any of it.
+
+Then there's Nikki.
+
+Nikki did what a lot of us had been trying to do for a long time. She figured him out.
+
+Timmy didn't hang around as long after skates anymore. Not available after nine. Or suddenly very available after nine. He was making room for something. He just didn't know how to say it yet.
+
+Timmy was always a knight in shining armor. Dependable. Steady. Showed up for everyone. But there was more in there and we all knew it. Nikki gave him the courage to show it. She made him play the wizard he was always capable of being.
+
+Nikki was moving to California for her teaching career and a pandemic was not going to change her mind. Timmy told me less than ten days before he left that he was going too. Quit his job. Followed the girl he loved across the country.
+
+Only when you don't know what's going to happen can you experience the thrill of it happening. He took his own advice.
+
+Tim was my best man. COVID wedding. Fifty people. Backyard. He stood next to me when it counted. It's an honor to return the favor.
+
+Nikki, take good care of him. He won't say it so I'll say it for him. He's one of the great ones.
+
+Timmy, well done.
+
+Raise your glass.
+
+To Timmy and Nikki. You took the risk. Everything from here is the reward.
+
+Cheers.</div>
+<div class="cd" style="margin-top:11px"><div class="m" style="font-size:9px;color:var(--sn);letter-spacing:2px;margin-bottom:4px">DELIVERY</div>
+<div style="font-size:11px;color:var(--td);line-height:1.6">Max 1 drink cocktail hour. Pause after teeth. Pause after "she figured him out." Let "well done" land with eye contact. Room on toast.</div></div>
+</div>
+
+<!-- NOTES (Notepad) -->
+<div class="tab" id="t-no">
+<div class="m" style="font-size:9px;letter-spacing:3px;color:var(--tm);margin-bottom:10px">NOTEPAD</div>
+<textarea id="scratchpad" class="pad" placeholder="Dump thoughts, links, reminders, whatever. Auto-saves."></textarea>
+<div class="m" style="font-size:8px;color:var(--tf);margin-top:4px;margin-bottom:20px;text-align:right" id="pad-status"></div>
+<div class="m" style="font-size:9px;letter-spacing:3px;color:var(--tm);margin-bottom:8px">QUICK REMINDERS</div>
+<div style="display:flex;gap:7px;margin-bottom:13px">
+<input id="ni" type="text" placeholder="Add a reminder..." style="flex:1;padding:8px 10px;background:var(--bm);border:1px solid var(--bd);border-radius:5px;color:var(--tx);font-family:Georgia,serif;font-size:12px;outline:none">
+<button onclick="addN()" class="m" style="padding:8px 13px;background:var(--bh);border:1px solid var(--sn);border-radius:5px;color:var(--tb);font-size:10px;letter-spacing:2px;cursor:pointer;white-space:nowrap">+</button>
+</div>
+<div id="n-a"></div>
+<div id="n-ds" style="display:none;margin-top:13px"><div class="m" style="font-size:9px;color:var(--tm);margin-bottom:5px;border-bottom:1px solid var(--bd);padding-bottom:3px">DONE</div><div id="n-dl"></div></div>
+</div>
+
+<!-- NOTE -->
+<div class="tab" id="t-lt">
+<div style="border-left:2px solid var(--sn);padding:7px 11px;margin-bottom:13px;font-size:10px;color:var(--sn);font-style:italic">Handwrite on card. Give at Puesto dinner Thu night.</div>
+<div style="background:linear-gradient(135deg,#161A28,#121624);border:1px solid #2A3048;border-radius:10px;padding:20px 16px;font-size:14px;line-height:2.2;color:#D0CCE0;white-space:pre-wrap">Tim,
+
+When I got married, you hadn't been through it yet. You showed up and you were great. So I'm not going to stand here and tell you what to expect. You have to live it.
+
+Trust your gut. It got you here. Everything we go through, every bit of growth, none of it means anything without the person next to you. You found that with Nikki. You put in the work to get here.
+
+Journey first. Outcomes can't be controlled. Seat belts on. Mystery Alaska. Skating the river. For the pure joy of it.
+
+The rest just happens.
+
+Mac</div></div>
+
+<!-- INTEL -->
+<div class="tab" id="t-rf">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:13px">
+<div class="m" style="font-size:9px;letter-spacing:3px;color:var(--tm)">INTEL</div>
+<button id="ebtn" onclick="tgE()" class="m" style="padding:5px 11px;background:var(--bh);border:1px solid var(--sn);border-radius:4px;color:var(--sn);font-size:9px;letter-spacing:2px;cursor:pointer">EDIT</button></div>
+<div id="rf-c"></div>
+<div id="ov-c" style="margin-top:13px"></div>
+</div>
+
+</div>
+<script>
+var SK='tt8',S={ck:{},ov:{},no:[],rf:{},pad:''},ed=false;
+try{var r=localStorage.getItem(SK);if(r){var p=JSON.parse(r);if(p.ck)S.ck=p.ck;if(p.ov)S.ov=p.ov;if(p.no)S.no=p.no;if(p.rf)S.rf=p.rf;if(p.pad)S.pad=p.pad;}}catch(e){}
+function sv(){try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}}
+var CER=new Date("2026-04-10T16:30:00-07:00");
+var MX=["Structure over narrative.","Rhythm over intensity.","Presence over adrenaline.","Consistency over heroism.","Completion feeds confidence.","Peace is the ultimate measure of competence."];
+var svT=null;
+
+var WK=[
+{day:"PRE-TRIP",lb:"Before You Leave",ac:"#8B97A8",it:[
+{x:"Download entertainment iPad+iPhone"},{x:"Call Enterprise: confirm 11:30 PM pickup",tp:"Conf: 69430727"},{x:"Book barber Thu AM",f:1},{x:"Book Float North Country Wed",f:1},{x:"Book massage",f:1},{x:"Print speech + save on phone"},{x:"Handwrite Timmy note on card"},{x:"Screenshot all confirmations"},{x:"Request early check-in Bahia: (858) 488-0551",f:1}]},
+{day:"TUE APR 7",lb:"Travel Day",ac:"#68B4E0",it:[
+{x:"3:00 PM EST \u2013 Leave for ROC"},{x:"5:02 PM \u2013 AA 3825 ROC\u2192ORD 8A",fl:1},{x:"6:25 PM CST \u2013 ORD 2h35m layover",tp:"Eat. Charge. No drinks."},{x:"9:00 PM \u2013 AA 2285 ORD\u2192SAN 8F",fl:1},{x:"11:33 PM PT \u2013 Arrive San Diego"},{x:"11:45 PM \u2013 Enterprise pickup SAN",tp:"Conf: 69430727",lnk:"daddr=3355+Admiral+Boland+Way+San+Diego+CA|Directions"},{x:"Drive to Wyndham. Sleep.",tp:"Conf: 6226917891",lnk:"Wyndham San Diego Bayside|Map"}]},
+{day:"WED APR 8",lb:"Explore + Reset",ac:"#88D4AC",it:[
+{x:"6:27 AM \u2013 Sunrise Mt Soledad",tp:"Drive to top. 360 views.",lnk:"Mt Soledad La Jolla CA|Map"},{x:"9:00 AM \u2013 SRF Gardens Encinitas",tp:"20 min north. Koi ponds, cliffs.",lnk:"Self Realization Fellowship Encinitas|Map"},{x:"10:30 AM \u2013 Breakfast Encinitas"},{x:"11:30 AM \u2013 Ben arrives. Pick up.",tp:"Ride logistics TBD"},{x:"Float North Country",f:1,tp:"BOOK BY MAR 31"},{x:"Massage",f:1},{x:"Afternoon \u2013 Confirm ops w/ Timmy",tp:"Rings, attire, groomsmen duties"},{x:"7:13 PM \u2013 Sunset Cliffs",tp:"West-facing Pacific bluffs.",lnk:"Sunset Cliffs Natural Park San Diego|Map"},{x:"Piano bar?"},{x:"Wyndham. Early bed."}]},
+{day:"THU APR 9",lb:"Prep + Boys Night",ac:"#D4A870",it:[
+{x:"Morning \u2013 Barber + beard",f:1,tp:"Maverick's or OftnFvded PB. Book ahead."},{x:"Small adventure / lunch"},{x:"4:00 PM \u2013 Check into Bahia Resort",tp:"Conf: 72071536393710",lnk:"daddr=998+W+Mission+Bay+Dr+San+Diego+CA+92109|Directions"},{x:"Steam suit. Lay out Friday kit.",tp:"Suit, shirt, tie, shoes, socks, belt"},{x:"Charge all devices"},{x:"7:00 PM \u2013 Puesto dinner w/ boys",tp:"Mission Valley.",lnk:"Puesto Mission Valley San Diego|Map"},{x:"Nightcap \u2013 Bars near Bahia",tp:"Walking distance."},{x:"Give Timmy the note"},{x:"Bed early. Wedding tomorrow."}]},
+{day:"FRI APR 10",lb:"WEDDING DAY",ac:"#F0C868",it:[
+{x:"8:00 AM \u2013 Breakfast. Hydrate."},{x:"9:00 AM \u2013 Speech aloud once standing"},{x:"10:00 AM \u2013 Tower Beach Club w/ suit",tp:"Help setup.",lnk:"daddr=1010+Santa+Clara+Pl+San+Diego+CA+92109|Directions"},{x:"10:30 AM \u2013 Rehearsal",tp:"Processional, ring handoff, where to stand"},{x:"After rehearsal \u2013 Sandwiches"},{x:"Head to Timmy's apt \u2013 Chill + suit up",tp:"2731 Worden St. ~15 min from venue.",lnk:"daddr=2731+Worden+St+San+Diego+CA+92110|Directions"},{x:"3:00-3:30 PM \u2013 Head back to venue"},{x:"Photos before ceremony"},{x:"3:45 PM \u2013 Wedding party at venue"},{x:"4:00 PM \u2013 Guests arrive"},{x:"4:30 PM \u2013 CEREMONY",tp:"Don't lock knees."},{x:"5:00 PM \u2013 Cocktail hour",tp:"MAX 1 DRINK."},{x:"6:30 PM \u2013 First dance + welcome toast"},{x:"6:45 PM \u2013 Dinner",tp:"Eat before speech."},{x:"6:55 PM \u2013 Sunset pictures"},{x:"7:16 PM \u2013 Sunset"},{x:"\uD83C\uDFA4 ~7:30 PM \u2013 YOUR SPEECH",sp:1,tp:"Then parent dances."},{x:"7:45 PM \u2013 Dance floor + churro cart setup"},{x:"8:30 PM \u2013 Churro cart"},{x:"9:45 PM \u2013 Last song"},{x:"10:00 PM \u2013 Guests depart"}]},
+{day:"SAT APR 11",lb:"Beach + Fly Home",ac:"#E88868",it:[
+{x:"9:00 AM \u2013 Pack everything",tp:"Check everywhere."},{x:"Jet ski tour?",f:1,tp:"Mission Bay Sportcenter or H2O"},{x:"10:30 AM \u2013 Check out Bahia"},{x:"11:00 AM \u2013 Mission Beach",tp:"Sunscreen. Hydrate.",lnk:"Mission Beach San Diego|Map"},{x:"3:30 PM \u2013 Wind down"},{x:"5:30 PM \u2013 Dinner near airport"},{x:"8:00 PM \u2013 Return car. Gas first.",tp:"Extend thru evening!",lnk:"daddr=3355+Admiral+Boland+Way+San+Diego+CA|Directions"},{x:"8:30 PM \u2013 Security SAN"},{x:"10:40 PM \u2013 AA 2366 SAN\u2192ORD 8A",fl:1}]},
+{day:"SUN APR 12",lb:"Recovery",ac:"#8B97A8",it:[
+{x:"4:45 AM \u2013 ORD 3h44m layover",tp:"Coffee. Food."},{x:"8:29 AM \u2013 AA 3823 ORD\u2192ROC 8A",fl:1},{x:"11:22 AM EST \u2013 Home. Sleep."}]}
+];
+
+var IT=[
+{id:"p1",x:"Suit garment bag",c:1,g:"P"},{id:"p2",x:"Dress shirt",c:1,g:"P"},{id:"p3",x:"Backup shirt",c:0,g:"P"},{id:"p4",x:"Tie",c:1,g:"P"},{id:"p5",x:"Dress shoes",c:1,g:"P"},{id:"p6",x:"Black socks x2",c:0,g:"P"},{id:"p7",x:"Belt",c:1,g:"P"},{id:"p8",x:"Undershirt+underwear",c:0,g:"P"},{id:"p9",x:"Toothbrush+paste",c:0,g:"P"},{id:"p10",x:"Razor",c:0,g:"P"},{id:"p11",x:"Deodorant",c:0,g:"P"},{id:"p12",x:"Hair product",c:0,g:"P"},{id:"p13",x:"Cologne",c:0,g:"P"},{id:"p14",x:"Advil",c:0,g:"P"},{id:"p15",x:"Tide pen",c:1,g:"P"},{id:"p16",x:"Safety pins",c:1,g:"P"},{id:"p17",x:"Electrolytes",c:0,g:"P"},{id:"p18",x:"Battery pack",c:1,g:"P"},{id:"p19",x:"Charger+cable",c:1,g:"P"},{id:"p20",x:"Breath mints",c:0,g:"P"},{id:"p21",x:"Casual clothes 3 days",c:0,g:"P"},{id:"p22",x:"Beach outfit",c:0,g:"P"},{id:"p23",x:"Walking shoes",c:0,g:"P"},{id:"p24",x:"Sunglasses",c:1,g:"P"},{id:"p25",x:"Sunscreen",c:1,g:"P"},{id:"p26",x:"Hoodie/quarter-zip",c:1,g:"P"},{id:"p27",x:"Flip flops",c:0,g:"P"},{id:"p28",x:"Pants+shorts",c:0,g:"P"},{id:"p29",x:"Wallet ID",c:1,g:"P"},{id:"p30",x:"Phone",c:1,g:"P"},{id:"p31",x:"Cash $100+",c:0,g:"P"},{id:"p32",x:"Flight conf screenshot",c:1,g:"P"},{id:"p33",x:"Car conf screenshot",c:1,g:"P"},{id:"p34",x:"Hotel confs screenshot",c:1,g:"P"},{id:"p35",x:"Speech print+phone",c:1,g:"P"},{id:"p36",x:"Wedding card",c:0,g:"P"},{id:"p37",x:"Gift",c:0,g:"P"},{id:"p38",x:"Timmy note handwritten",c:0,g:"P"},{id:"p39",x:"iPad w/ entertainment",c:0,g:"P"},{id:"p40",x:"Headphones",c:0,g:"P"},
+{id:"r1",x:"Ring handoff plan",c:1,g:"R"},{id:"r2",x:"Extend rental car",c:1,g:"R"},{id:"r3",x:"Book Float North Country",c:1,g:"R"},{id:"r4",x:"Book barber Thu",c:1,g:"R"},{id:"r5",x:"Call Enterprise late pickup",c:1,g:"R"},{id:"r6",x:"Print speech",c:1,g:"R"},{id:"r7",x:"Practice speech 3+",c:1,g:"R"},{id:"r8",x:"Handwrite note",c:1,g:"R"},{id:"r9",x:"Screenshots done",c:1,g:"R"},{id:"r10",x:"Download entertainment",c:0,g:"R"},{id:"r11",x:"Request early Bahia check-in",c:0,g:"R"},
+{id:"w1",x:"Breakfast protein",c:1,g:"W"},{id:"w2",x:"32oz water",c:1,g:"W"},{id:"w3",x:"Speech 9 AM",c:1,g:"W"},{id:"w4",x:"Venue 10 AM w/ suit",c:1,g:"W"},{id:"w5",x:"Rehearsal 10:30",c:1,g:"W"},{id:"w6",x:"Note processional+rings",c:1,g:"W"},{id:"w7",x:"Suit up at Timmy's",c:1,g:"W"},{id:"w8",x:"Pocket: phone speech wallet",c:1,g:"W"},{id:"w9",x:"Venue 3:45",c:1,g:"W"},{id:"w10",x:"Ground Timmy",c:1,g:"W"},{id:"w11",x:"Rings confirmed",c:1,g:"W"},{id:"w12",x:"Max 1 drink cocktail",c:1,g:"W"},{id:"w13",x:"Eat dinner",c:1,g:"W"},{id:"w14",x:"Deliver speech ~7:30",c:1,g:"W"},{id:"w15",x:"Hydrate before bed",c:0,g:"W"}
+];
+var GL={P:"Packing",R:"Pre-Trip",W:"Wedding Day"},GK=["P","R","W"];
+
+var RFD=[
+{t:"FLIGHTS",ac:"#68B4E0",d:"Tue 7 / Sat 11",it:[{l:"Conf",v:"WLJCOD"},{l:"Out",v:"AA 3825 ROC\u2192ORD 5:02PM 8A"},{l:"Out",v:"AA 2285 ORD\u2192SAN 9PM 8F"},{l:"Ret",v:"AA 2366 SAN\u2192ORD 10:40PM 8A"},{l:"Ret",v:"AA 3823 ORD\u2192ROC 8:29AM 8A"}]},
+{t:"CAR",ac:"#88D4AC",d:"Apr 7-11",it:[{l:"Co",v:"Enterprise"},{l:"Conf",v:"69430727"},{l:"Pick",v:"Tue 11:30PM SAN"},{l:"Drop",v:"Sat EXTEND thru eve"},{l:"Addr",v:"3355 Admiral Boland Way SD"}]},
+{t:"WYNDHAM",ac:"#68B4E0",d:"Apr 7-9",it:[{l:"Name",v:"Wyndham San Diego Bayside"},{l:"Conf",v:"6226917891"},{l:"In",v:"Tue Apr 7 ~midnight"},{l:"Out",v:"Thu Apr 9"}]},
+{t:"BAHIA",ac:"#D4A870",d:"Apr 9-11",it:[{l:"Name",v:"Bahia Resort Hotel"},{l:"Conf",v:"72071536393710"},{l:"Addr",v:"998 W Mission Bay Dr 92109"},{l:"Ph",v:"(858) 488-0551"},{l:"In",v:"Thu Apr 9 4PM"},{l:"Out",v:"Sat Apr 11 11AM"}]},
+{t:"WEDDING",ac:"#F0C868",d:"Fri Apr 10",it:[{l:"Reh",v:"10:30 AM (arrive 10)"},{l:"Cer",v:"4:30 PM PT"},{l:"Venue",v:"Tower Beach Club"},{l:"Addr",v:"1010 Santa Clara Pl 92109"},{l:"Speech",v:"After sunset ~7:30"},{l:"End",v:"9:45 last song"}]},
+{t:"TIMMY",ac:"#88D4AC",d:"Fri suit-up",it:[{l:"Addr",v:"2731 Worden St 92110"},{l:"Note",v:"After rehearsal. Chill + suit up."}]},
+{t:"PUESTO",ac:"#D4A870",d:"Thu 7PM",it:[{l:"Spot",v:"Puesto"},{l:"Area",v:"Mission Valley"},{l:"After",v:"Bars near Bahia walking"}]},
+{t:"RETURN",ac:"#8B97A8",d:"Sat-Sun",it:[{l:"Dep",v:"Sat 10:40PM SAN"},{l:"ORD",v:"Sun 4:45AM"},{l:"Dep",v:"Sun 8:29AM"},{l:"Home",v:"Sun 11:22AM ROC"}]},
+{t:"BARBER",ac:"#D4A870",d:"Thu AM",it:[{l:"Opt1",v:"Maverick's PB"},{l:"Opt2",v:"OftnFvded PB"},{l:"Note",v:"Book ahead. 10min from Bahia."}]}
+];
+
+var OV=[{id:"o1",x:"Ring handoff plan"},{id:"o2",x:"Extend rental car Sat eve"},{id:"o3",x:"Book Float North Country"},{id:"o4",x:"Book barber Thu AM"},{id:"o5",x:"Ben pickup logistics Wed"},{id:"o6",x:"Book massage"}];
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function gRF(){var rf=JSON.parse(JSON.stringify(RFD));rf.forEach(function(r,ri){r.it.forEach(function(it,ii){var k='rf_'+ri+'_'+ii;if(S.rf[k])it.v=S.rf[k];});});return rf;}
+function gSt(){var t=IT.length,d=0,cT=0,cD=0;IT.forEach(function(i){if(S.ck[i.id])d++;if(i.c){cT++;if(S.ck[i.id])cD++;}});var oD=0;OV.forEach(function(v){if(S.ov[v.id])oD++;});return{t:t,d:d,cT:cT,cD:cD,oD:oD,oT:OV.length};}
+function cSIS(s){return Math.round((s.cT>0?s.cD/s.cT:0)*40+(s.t>0?s.d/s.t:0)*35+(s.oD/s.oT)*25);}
+
+var ct='hq';
+document.querySelectorAll('.nav button').forEach(function(b){b.addEventListener('click',function(){ct=b.dataset.t;document.querySelectorAll('.nav button').forEach(function(x){x.classList.remove('a');});b.classList.add('a');document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('a');});document.getElementById('t-'+ct).classList.add('a');if(ct==='hq')rHQ();if(ct==='rf')rRF();});});
+function sw(id){ct=id;document.querySelectorAll('.nav button').forEach(function(b){b.classList.remove('a');if(b.dataset.t===id)b.classList.add('a');});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('a');});document.getElementById('t-'+id).classList.add('a');if(id==='hq')rHQ();}
+
+function rCD(){var n=new Date(),df=CER-n,el=document.getElementById('cd-d');if(df<=0){el.innerHTML='<div style="font-size:15px;color:var(--gn)">Ceremony Time</div>';return;}var dy=Math.floor(df/864e5),h=Math.floor((df%864e5)/36e5),m=Math.floor((df%36e5)/6e4),s=Math.floor((df%6e4)/1e3);el.innerHTML=[{v:dy,l:"D"},{v:h,l:"H"},{v:m,l:"M"},{v:s,l:"S"}].map(function(u){return'<div style="display:inline-block;text-align:center;margin:0 6px"><div style="font-size:22px;color:var(--tb);line-height:1">'+String(u.v).padStart(2,'0')+'</div><div class="m" style="font-size:8px;color:var(--tm);letter-spacing:1px;margin-top:2px">'+u.l+'</div></div>';}).join('');}
+setInterval(rCD,1000);rCD();
+
+function rHQ(){var s=gSt(),sis=cSIS(s),b=sis>=85?{l:"VIABLE",c:"var(--gn)"}:sis>=70?{l:"CONDITIONAL",c:"var(--am)"}:sis>=50?{l:"HIGH RISK",c:"var(--co)"}:{l:"NOT READY",c:"var(--rd)"};
+document.getElementById('sis-n').style.color=b.c;document.getElementById('sis-n').textContent=sis;
+document.getElementById('sis-l').style.color=b.c;document.getElementById('sis-l').textContent=b.l;
+document.getElementById('sis-b').style.width=sis+'%';
+document.getElementById('sis-d').style.color=b.c;document.getElementById('sis-d').textContent=sis>=85?"Systems green.":sis>=70?"Gaps remain.":sis>=50?"Friction ahead.":"Prep outstanding.";
+document.getElementById('mx').textContent='"'+MX[Math.floor(Math.random()*MX.length)]+'"';
+document.getElementById('s-i').textContent=s.d+'/'+s.t;
+document.getElementById('s-c').textContent=s.cD+'/'+s.cT;
+document.getElementById('s-o').textContent=(s.oT-s.oD);document.getElementById('s-o').style.color=s.oD===s.oT?'var(--gn)':'var(--am)';
+var al='';if(s.oD<s.oT)al+='<div class="cd" style="border-left:3px solid var(--am);background:rgba(240,200,104,0.06)"><div class="m" style="font-size:9px;color:var(--am)">'+(s.oT-s.oD)+' OPEN VARIABLES</div></div>';
+if(s.cD<s.cT)al+='<div class="cd" style="border-left:3px solid var(--co);background:rgba(232,136,104,0.06)"><div class="m" style="font-size:9px;color:var(--co)">'+(s.cT-s.cD)+' CRITICAL REMAINING</div></div>';
+if(sis>=85)al+='<div style="background:rgba(136,212,172,0.1);border:1px solid rgba(136,212,172,0.3);border-radius:10px;padding:15px;text-align:center;margin-bottom:8px"><div style="font-size:15px;color:var(--gn)">Mission Ready</div></div>';
+document.getElementById('alerts').innerHTML=al;
+var h='';GK.forEach(function(g){var gi=IT.filter(function(i){return i.g===g;}),gd=gi.filter(function(i){return S.ck[i.id];}).length,gt=gi.length,gp=Math.round(gd/gt*100);
+h+='<div class="cd" style="cursor:pointer" onclick="sw(\'cl\')"><div style="display:flex;justify-content:space-between;font-size:12px"><span>'+GL[g]+'</span><span class="m" style="font-size:10px;color:'+(gp===100?'var(--gn)':'var(--bl)')+'">'+gd+'/'+gt+(gp===100?' \u2713':'')+'</span></div><div style="height:2px;background:var(--bg);border-radius:1px;margin-top:5px;overflow:hidden"><div style="width:'+gp+'%;height:100%;background:'+(gp===100?'var(--gn)':'var(--bl)')+'"></div></div></div>';});
+document.getElementById('cl-sum').innerHTML=h;}
+
+function rWK(){var h='';WK.forEach(function(d,di){
+h+='<div style="margin-bottom:10px"><button onclick="tgW('+di+')" style="width:100%;text-align:left;background:var(--bm);border:1px solid var(--bd);border-radius:8px;padding:11px 13px;color:var(--tx);cursor:pointer;font-family:Georgia,serif"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="m" style="font-size:9px;font-weight:700;color:'+d.ac+';letter-spacing:2px">'+d.day+'</div><div style="font-size:12px;margin-top:1px">'+d.lb+'</div></div><span class="m" style="font-size:10px;color:var(--tm)" id="wa'+di+'">\u25BC</span></div></button>';
+h+='<div id="we'+di+'" style="display:none;background:var(--bg);border:1px solid '+d.ac+'22;border-top:none;border-radius:0 0 8px 8px;padding:5px 10px 10px">';
+d.it.forEach(function(e){var cls=e.fl?'fl':e.f?'tbd':e.sp?'sp':'';
+h+='<div class="ev '+cls+'"><div style="font-size:12px;line-height:1.4;color:'+(e.f?'var(--am)':e.sp?'var(--am)':'var(--tx)')+'">'+(e.f?'\u26A0 ':'')+esc(e.x)+'</div>'+(e.tp?'<div style="font-size:10px;margin-top:2px;color:var(--tf);font-style:italic">'+esc(e.tp)+'</div>':'')+(e.lnk?'<a style="display:inline-block;margin-top:3px;font-size:10px;color:var(--bl)" href="https://maps.apple.com/?'+(e.lnk.split('|')[0].indexOf('daddr')===0?e.lnk.split('|')[0]:'q='+encodeURIComponent(e.lnk.split('|')[0]))+'" target="_blank">\u27A4 '+e.lnk.split('|')[1]+'</a>':'')+'</div>';});
+h+='</div></div>';});document.getElementById('wk-l').innerHTML=h;}
+var oW=-1;window.tgW=function(di){var el=document.getElementById('we'+di),ar=document.getElementById('wa'+di);if(oW===di){el.style.display='none';ar.textContent='\u25BC';oW=-1;return;}if(oW>=0){document.getElementById('we'+oW).style.display='none';document.getElementById('wa'+oW).textContent='\u25BC';}el.style.display='block';ar.textContent='\u25B2';oW=di;};
+
+function rCL(){var h='';GK.forEach(function(g){var gi=IT.filter(function(i){return i.g===g;}),gd=gi.filter(function(i){return S.ck[i.id];}).length,gt=gi.length;
+h+='<div style="margin-bottom:18px"><div class="m" style="font-size:11px;color:var(--sn);letter-spacing:3px;border-bottom:1px solid var(--bd);padding-bottom:5px;margin-bottom:7px">'+GL[g].toUpperCase()+' ('+gd+'/'+gt+')</div>';
+gi.forEach(function(i){var d=S.ck[i.id];h+='<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 7px;cursor:pointer;opacity:'+(d?0.3:1)+'"><input type="checkbox" '+(d?'checked':'')+' onchange="tgC(\''+i.id+'\')" style="width:18px;height:18px;margin-top:1px;accent-color:var(--sn);flex-shrink:0"><span style="font-size:12px;line-height:1.3;text-decoration:'+(d?'line-through':'none')+';color:'+(d?'var(--tm)':i.c?'var(--am)':'var(--tx)')+';font-weight:'+(i.c?600:400)+'">'+(i.c&&!d?'\u2605 ':'')+esc(i.x)+'</span></label>';});
+h+='</div>';});document.getElementById('cl-c').innerHTML=h;}
+window.tgC=function(id){S.ck[id]=!S.ck[id];sv();rCL();rHQ();};
+
+window.tgE=function(){ed=!ed;document.getElementById('ebtn').textContent=ed?'SAVE':'EDIT';document.getElementById('ebtn').style.color=ed?'var(--gn)':'var(--sn)';document.getElementById('ebtn').style.borderColor=ed?'var(--gn)':'var(--sn)';if(!ed)sv();rRF();};
+window.rfU=function(k,v){S.rf[k]=v;};
+function rRF(){var rf=gRF(),h='';rf.forEach(function(r,ri){
+h+='<div class="cd" style="border-left:3px solid '+r.ac+';margin-bottom:7px"><div style="display:flex;justify-content:space-between;margin-bottom:5px"><div class="m" style="font-size:9px;font-weight:700;color:'+r.ac+';letter-spacing:2px">'+r.t+'</div><div class="m" style="font-size:9px;color:var(--td)">'+r.d+'</div></div>';
+r.it.forEach(function(i,ii){var k='rf_'+ri+'_'+ii;
+if(ed){h+='<div style="display:flex;gap:6px;padding:2px 0;align-items:center"><span class="m" style="font-size:9px;color:var(--tm);min-width:34px;flex-shrink:0">'+i.l+'</span><input class="ei" value="'+esc(i.v)+'" oninput="rfU(\''+k+'\',this.value)"></div>';}
+else{h+='<div style="display:flex;gap:7px;padding:3px 0;'+(ii<r.it.length-1?'border-bottom:1px solid #0F1820':'')+'"><span class="m" style="font-size:9px;color:var(--tm);min-width:34px;flex-shrink:0">'+i.l+'</span><span style="font-size:12px">'+esc(i.v)+'</span></div>';}});
+h+='</div>';});document.getElementById('rf-c').innerHTML=h;
+var ov='<div class="cd" style="border-left:3px solid var(--am)"><div class="m" style="font-size:9px;font-weight:700;color:var(--am);letter-spacing:2px;margin-bottom:6px">OPEN VARIABLES</div>';
+OV.forEach(function(v){var d=S.ov[v.id];ov+='<label style="display:flex;align-items:center;gap:10px;padding:5px 2px;cursor:pointer;border-bottom:1px solid #0F1820"><input type="checkbox" '+(d?'checked':'')+' onchange="tgO(\''+v.id+'\')" style="width:17px;height:17px;accent-color:var(--gn);flex-shrink:0"><span style="font-size:12px;color:'+(d?'var(--gn)':'var(--am)')+';text-decoration:'+(d?'line-through':'none')+';opacity:'+(d?0.4:1)+'">'+esc(v.x)+'</span></label>';});
+ov+='</div>';document.getElementById('ov-c').innerHTML=ov;}
+window.tgO=function(id){S.ov[id]=!S.ov[id];sv();rRF();rHQ();};
+
+// NOTEPAD
+var padEl;
+function initPad(){padEl=document.getElementById('scratchpad');padEl.value=S.pad||'';padEl.addEventListener('input',function(){S.pad=padEl.value;if(svT)clearTimeout(svT);document.getElementById('pad-status').textContent='typing...';svT=setTimeout(function(){sv();document.getElementById('pad-status').textContent='saved';setTimeout(function(){document.getElementById('pad-status').textContent='';},1500);},800);});}
+
+// REMINDERS
+window.addN=function(){var ni=document.getElementById('ni'),t=ni.value.trim();if(!t)return;S.no.push({id:'n'+Date.now(),x:t,dn:false});ni.value='';sv();rN();};
+document.getElementById('ni').addEventListener('keydown',function(e){if(e.key==='Enter')addN();});
+window.tgN=function(id){S.no.forEach(function(n){if(n.id===id)n.dn=!n.dn;});sv();rN();};
+window.dlN=function(id){S.no=S.no.filter(function(n){return n.id!==id;});sv();rN();};
+function rN(){var act=S.no.filter(function(n){return!n.dn;}),cmp=S.no.filter(function(n){return n.dn;}),h='';
+if(!act.length)h='<div style="text-align:center;padding:10px;color:var(--tf);font-style:italic;font-size:11px">No reminders yet.</div>';
+act.forEach(function(n){
+h+='<div class="cd"><div style="display:flex;align-items:flex-start;gap:10px"><input type="checkbox" onchange="tgN(\''+n.id+'\')" style="width:17px;height:17px;margin-top:2px;accent-color:var(--gn);flex-shrink:0"><div style="flex:1;font-size:12px;line-height:1.4">'+esc(n.x)+'</div><button onclick="dlN(\''+n.id+'\')" style="background:none;border:none;color:var(--tf);cursor:pointer;font-size:14px">\u00D7</button></div></div>';});
+document.getElementById('n-a').innerHTML=h;
+if(cmp.length){document.getElementById('n-ds').style.display='block';var dh='';cmp.forEach(function(n){dh+='<div style="display:flex;align-items:center;gap:9px;padding:4px 9px;opacity:0.3"><input type="checkbox" checked onchange="tgN(\''+n.id+'\')" style="width:14px;height:14px;accent-color:var(--gn);flex-shrink:0"><span style="font-size:10px;text-decoration:line-through;color:var(--tm);flex:1">'+esc(n.x)+'</span><button onclick="dlN(\''+n.id+'\')" style="background:none;border:none;color:var(--tf);cursor:pointer;font-size:11px">\u00D7</button></div>';});document.getElementById('n-dl').innerHTML=dh;}else{document.getElementById('n-ds').style.display='none';}}
+
+rHQ();rWK();rCL();rRF();rN();initPad();
+</script>
+</body>
+</html>
